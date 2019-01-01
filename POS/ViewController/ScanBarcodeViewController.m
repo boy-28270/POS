@@ -235,23 +235,26 @@
     self.resultText = result.text;
     
     // Display information about the result onscreen.
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Scanned!" message:result.text delegate:self cancelButtonTitle:@"ยกเลิก" otherButtonTitles:@"ตกลง", nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Scanned!" message:result.text delegate:self cancelButtonTitle:@"ยกเลิก" otherButtonTitles:@"ตกลง", nil];
+//    [alert show];
     
     // Vibrate
     AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate resultBarcode:self.resultText];
 }
 
 #pragma mark - UIAlertViewDelegate
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 0){
-        self.scanning = YES;
-        [self.capture start];
-    } else {
-        [self.navigationController popViewControllerAnimated:YES];
-        [self.delegate resultBarcode:self.resultText];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (buttonIndex == 0){
+//        self.scanning = YES;
+//        [self.capture start];
+//    } else {
+//        [self.navigationController popViewControllerAnimated:YES];
+//        [self.delegate resultBarcode:self.resultText];
+//    }
+//}
 
 @end
