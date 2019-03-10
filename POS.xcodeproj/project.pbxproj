@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		120B053B831E7368DF2A7343 /* libPods-POSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 078313CE8B9697D7F6C417FC /* libPods-POSTests.a */; };
 		1242A0694B8FBE22302CCB44 /* libPods-POS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64761436B06FB68D24B88CA /* libPods-POS.a */; };
+		D2452258222A7819005E3B3B /* ScanBarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2452256222A7819005E3B3B /* ScanBarcodeViewController.m */; };
+		D2452259222A7819005E3B3B /* ScanBarcodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2452257222A7819005E3B3B /* ScanBarcodeViewController.xib */; };
+		D245225C222AB4C6005E3B3B /* AddStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D245225B222AB4C6005E3B3B /* AddStockViewController.m */; };
+		D245225F222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png in Resources */ = {isa = PBXBuildFile; fileRef = D245225E222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png */; };
 		D2B0EA312221B04B005A6F12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA302221B04B005A6F12 /* AppDelegate.m */; };
 		D2B0EA342221B04B005A6F12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA332221B04B005A6F12 /* ViewController.m */; };
 		D2B0EA372221B04B005A6F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA352221B04B005A6F12 /* Main.storyboard */; };
@@ -17,6 +21,20 @@
 		D2B0EA3F2221B04D005A6F12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA3E2221B04D005A6F12 /* main.m */; };
 		D2B0EA492221B04D005A6F12 /* POSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA482221B04D005A6F12 /* POSTests.m */; };
 		D2B0EA542221B04D005A6F12 /* POSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA532221B04D005A6F12 /* POSUITests.m */; };
+		D2B0EA7322227A8B005A6F12 /* SelectionItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA7222227A8B005A6F12 /* SelectionItemView.m */; };
+		D2B0EA7522227AAE005A6F12 /* SelectionItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA7422227AAE005A6F12 /* SelectionItemView.xib */; };
+		D2B0EA7B22229E9A005A6F12 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA7A22229E9A005A6F12 /* Utils.m */; };
+		D2B0EA7F2222A3FC005A6F12 /* IMG_3501.JPG in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA7C2222A3FC005A6F12 /* IMG_3501.JPG */; };
+		D2B0EA802222A3FC005A6F12 /* IMG_3495.JPG in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA7D2222A3FC005A6F12 /* IMG_3495.JPG */; };
+		D2B0EA812222A3FC005A6F12 /* IMG_3500.JPG in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA7E2222A3FC005A6F12 /* IMG_3500.JPG */; };
+		D2B0EA972222E3C6005A6F12 /* SummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA962222E3C6005A6F12 /* SummaryView.m */; };
+		D2B0EA992222E3D5005A6F12 /* SummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA982222E3D5005A6F12 /* SummaryView.xib */; };
+		D2F0A3E42232BE2400197472 /* AddStockFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3E32232BE2400197472 /* AddStockFirstViewController.m */; };
+		D2F0A3E62234280700197472 /* icons8-search-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F0A3E52234280500197472 /* icons8-search-50.png */; };
+		D2F0A3EC22345CF000197472 /* octo.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F0A3EB22345CEF00197472 /* octo.png */; };
+		D2F0A3F522348E8600197472 /* StockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3F422348E8600197472 /* StockViewController.m */; };
+		D2F0A3F822348EA700197472 /* StockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3F722348EA700197472 /* StockTableViewCell.m */; };
+		D2F0A3FB22348FA800197472 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3FA22348FA800197472 /* ImageCollectionViewCell.m */; };
 		D9325F7EA07411A75FFBBFAA /* libPods-POSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CF10D664450E710123A647 /* libPods-POSUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +63,12 @@
 		74D13D7975F8D2025E235758 /* Pods-POSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSUITests.debug.xcconfig"; path = "Target Support Files/Pods-POSUITests/Pods-POSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BC502366656437AC624F810B /* Pods-POSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTests.release.xcconfig"; path = "Target Support Files/Pods-POSTests/Pods-POSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0B7136784B96EC43DCA7E27 /* Pods-POSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTests.debug.xcconfig"; path = "Target Support Files/Pods-POSTests/Pods-POSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2452255222A7818005E3B3B /* ScanBarcodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanBarcodeViewController.h; sourceTree = "<group>"; };
+		D2452256222A7819005E3B3B /* ScanBarcodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanBarcodeViewController.m; sourceTree = "<group>"; };
+		D2452257222A7819005E3B3B /* ScanBarcodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanBarcodeViewController.xib; sourceTree = "<group>"; };
+		D245225A222AB4C6005E3B3B /* AddStockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddStockViewController.h; sourceTree = "<group>"; };
+		D245225B222AB4C6005E3B3B /* AddStockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddStockViewController.m; sourceTree = "<group>"; };
+		D245225E222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-barcode-scanner-filled-64.png"; sourceTree = "<group>"; };
 		D2B0EA2C2221B04B005A6F12 /* POS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B0EA2F2221B04B005A6F12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2B0EA302221B04B005A6F12 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,6 +85,28 @@
 		D2B0EA4F2221B04D005A6F12 /* POSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = POSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B0EA532221B04D005A6F12 /* POSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = POSUITests.m; sourceTree = "<group>"; };
 		D2B0EA552221B04D005A6F12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2B0EA7122227A8B005A6F12 /* SelectionItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionItemView.h; sourceTree = "<group>"; };
+		D2B0EA7222227A8B005A6F12 /* SelectionItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectionItemView.m; sourceTree = "<group>"; };
+		D2B0EA7422227AAE005A6F12 /* SelectionItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectionItemView.xib; sourceTree = "<group>"; };
+		D2B0EA7922229E9A005A6F12 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		D2B0EA7A22229E9A005A6F12 /* Utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		D2B0EA7C2222A3FC005A6F12 /* IMG_3501.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3501.JPG; sourceTree = "<group>"; };
+		D2B0EA7D2222A3FC005A6F12 /* IMG_3495.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3495.JPG; sourceTree = "<group>"; };
+		D2B0EA7E2222A3FC005A6F12 /* IMG_3500.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3500.JPG; sourceTree = "<group>"; };
+		D2B0EA942222DBDC005A6F12 /* SelectItemViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectItemViewDelegate.h; sourceTree = "<group>"; };
+		D2B0EA952222E3C6005A6F12 /* SummaryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SummaryView.h; sourceTree = "<group>"; };
+		D2B0EA962222E3C6005A6F12 /* SummaryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SummaryView.m; sourceTree = "<group>"; };
+		D2B0EA982222E3D5005A6F12 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
+		D2F0A3E22232BE2400197472 /* AddStockFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddStockFirstViewController.h; sourceTree = "<group>"; };
+		D2F0A3E32232BE2400197472 /* AddStockFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddStockFirstViewController.m; sourceTree = "<group>"; };
+		D2F0A3E52234280500197472 /* icons8-search-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-search-50.png"; sourceTree = "<group>"; };
+		D2F0A3EB22345CEF00197472 /* octo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octo.png; sourceTree = "<group>"; };
+		D2F0A3F322348E8600197472 /* StockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockViewController.h; sourceTree = "<group>"; };
+		D2F0A3F422348E8600197472 /* StockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockViewController.m; sourceTree = "<group>"; };
+		D2F0A3F622348EA700197472 /* StockTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StockTableViewCell.h; sourceTree = "<group>"; };
+		D2F0A3F722348EA700197472 /* StockTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockTableViewCell.m; sourceTree = "<group>"; };
+		D2F0A3F922348FA800197472 /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
+		D2F0A3FA22348FA800197472 /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
 		D376F25584FC95921F308641 /* Pods-POS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POS.debug.xcconfig"; path = "Target Support Files/Pods-POS/Pods-POS.debug.xcconfig"; sourceTree = "<group>"; };
 		D64761436B06FB68D24B88CA /* libPods-POS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-POS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -103,6 +149,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D245225D222BF49E005E3B3B /* icon */ = {
+			isa = PBXGroup;
+			children = (
+				D245225E222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png */,
+				D2F0A3E52234280500197472 /* icons8-search-50.png */,
+			);
+			path = icon;
+			sourceTree = "<group>";
+		};
 		D2B0EA232221B04B005A6F12 = {
 			isa = PBXGroup;
 			children = (
@@ -128,10 +183,13 @@
 		D2B0EA2E2221B04B005A6F12 /* POS */ = {
 			isa = PBXGroup;
 			children = (
+				D2B0EA922222DB58005A6F12 /* Common */,
+				D2B0EA6B2221D4D5005A6F12 /* Images */,
+				D2B0EA912222DB41005A6F12 /* View */,
+				D2B0EA932222DB78005A6F12 /* ViewController */,
+				D2B0EA8F2222DAFF005A6F12 /* Protocol */,
 				D2B0EA2F2221B04B005A6F12 /* AppDelegate.h */,
 				D2B0EA302221B04B005A6F12 /* AppDelegate.m */,
-				D2B0EA322221B04B005A6F12 /* ViewController.h */,
-				D2B0EA332221B04B005A6F12 /* ViewController.m */,
 				D2B0EA352221B04B005A6F12 /* Main.storyboard */,
 				D2B0EA382221B04D005A6F12 /* Assets.xcassets */,
 				D2B0EA3A2221B04D005A6F12 /* LaunchScreen.storyboard */,
@@ -159,6 +217,70 @@
 			path = POSUITests;
 			sourceTree = "<group>";
 		};
+		D2B0EA6B2221D4D5005A6F12 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				D245225D222BF49E005E3B3B /* icon */,
+				D2B0EA7D2222A3FC005A6F12 /* IMG_3495.JPG */,
+				D2B0EA7E2222A3FC005A6F12 /* IMG_3500.JPG */,
+				D2B0EA7C2222A3FC005A6F12 /* IMG_3501.JPG */,
+				D2F0A3EB22345CEF00197472 /* octo.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		D2B0EA8F2222DAFF005A6F12 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				D2B0EA942222DBDC005A6F12 /* SelectItemViewDelegate.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		D2B0EA912222DB41005A6F12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D2B0EA7122227A8B005A6F12 /* SelectionItemView.h */,
+				D2B0EA7222227A8B005A6F12 /* SelectionItemView.m */,
+				D2B0EA7422227AAE005A6F12 /* SelectionItemView.xib */,
+				D2B0EA952222E3C6005A6F12 /* SummaryView.h */,
+				D2B0EA962222E3C6005A6F12 /* SummaryView.m */,
+				D2B0EA982222E3D5005A6F12 /* SummaryView.xib */,
+				D2F0A3F622348EA700197472 /* StockTableViewCell.h */,
+				D2F0A3F722348EA700197472 /* StockTableViewCell.m */,
+				D2F0A3F922348FA800197472 /* ImageCollectionViewCell.h */,
+				D2F0A3FA22348FA800197472 /* ImageCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D2B0EA922222DB58005A6F12 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D2B0EA7922229E9A005A6F12 /* Utils.h */,
+				D2B0EA7A22229E9A005A6F12 /* Utils.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D2B0EA932222DB78005A6F12 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D2B0EA322221B04B005A6F12 /* ViewController.h */,
+				D2B0EA332221B04B005A6F12 /* ViewController.m */,
+				D245225A222AB4C6005E3B3B /* AddStockViewController.h */,
+				D245225B222AB4C6005E3B3B /* AddStockViewController.m */,
+				D2F0A3E22232BE2400197472 /* AddStockFirstViewController.h */,
+				D2F0A3E32232BE2400197472 /* AddStockFirstViewController.m */,
+				D2F0A3F322348E8600197472 /* StockViewController.h */,
+				D2F0A3F422348E8600197472 /* StockViewController.m */,
+				D2452255222A7818005E3B3B /* ScanBarcodeViewController.h */,
+				D2452256222A7819005E3B3B /* ScanBarcodeViewController.m */,
+				D2452257222A7819005E3B3B /* ScanBarcodeViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		D728CDE4740EEFC3B4D30A5C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,7 +291,6 @@
 				74D13D7975F8D2025E235758 /* Pods-POSUITests.debug.xcconfig */,
 				3BFC311E2C875A8FED05C24E /* Pods-POSUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -280,8 +401,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B0EA3C2221B04D005A6F12 /* LaunchScreen.storyboard in Resources */,
+				D245225F222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png in Resources */,
 				D2B0EA392221B04D005A6F12 /* Assets.xcassets in Resources */,
+				D2F0A3E62234280700197472 /* icons8-search-50.png in Resources */,
+				D2B0EA802222A3FC005A6F12 /* IMG_3495.JPG in Resources */,
+				D2B0EA992222E3D5005A6F12 /* SummaryView.xib in Resources */,
+				D2B0EA7F2222A3FC005A6F12 /* IMG_3501.JPG in Resources */,
+				D2B0EA812222A3FC005A6F12 /* IMG_3500.JPG in Resources */,
+				D2F0A3EC22345CF000197472 /* octo.png in Resources */,
 				D2B0EA372221B04B005A6F12 /* Main.storyboard in Resources */,
+				D2B0EA7522227AAE005A6F12 /* SelectionItemView.xib in Resources */,
+				D2452259222A7819005E3B3B /* ScanBarcodeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +507,16 @@
 			files = (
 				D2B0EA342221B04B005A6F12 /* ViewController.m in Sources */,
 				D2B0EA3F2221B04D005A6F12 /* main.m in Sources */,
+				D2452258222A7819005E3B3B /* ScanBarcodeViewController.m in Sources */,
+				D245225C222AB4C6005E3B3B /* AddStockViewController.m in Sources */,
+				D2B0EA7B22229E9A005A6F12 /* Utils.m in Sources */,
+				D2F0A3E42232BE2400197472 /* AddStockFirstViewController.m in Sources */,
+				D2B0EA972222E3C6005A6F12 /* SummaryView.m in Sources */,
 				D2B0EA312221B04B005A6F12 /* AppDelegate.m in Sources */,
+				D2B0EA7322227A8B005A6F12 /* SelectionItemView.m in Sources */,
+				D2F0A3F822348EA700197472 /* StockTableViewCell.m in Sources */,
+				D2F0A3FB22348FA800197472 /* ImageCollectionViewCell.m in Sources */,
+				D2F0A3F522348E8600197472 /* StockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +689,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 833Q946HTD;
 				INFOPLIST_FILE = POS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -568,6 +708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 833Q946HTD;
 				INFOPLIST_FILE = POS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
