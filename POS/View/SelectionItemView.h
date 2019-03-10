@@ -7,13 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SelectItemViewDelegate.h"
+#import "HistoryModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol SelectItemViewDelegate <NSObject>
+
+- (void)selectionDidSelected:(HistoryModel *)model;
+
+@end
 
 @interface SelectionItemView : UIView
 
 - (instancetype)initWithDelegate:(id<SelectItemViewDelegate>)delegate;
+- (void)configurationWithCode:(NSString *)code
+                         name:(NSString *)name
+                     imageUrl:(NSString *)imageUrl
+                         size:(NSString *)size
+                        color:(NSString *)color
+                        price:(NSString *)price;
 - (void)show:(BOOL)isShow;
 
 @end

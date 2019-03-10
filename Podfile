@@ -8,6 +8,7 @@ target 'POS' do
   # Pods for POS
   pod 'ZXingObjC', '~> 3.6.4'
   pod 'AFNetworking', '~> 3.0'
+  pod 'SDWebImage', '~> 4.0'
 
   target 'POSTests' do
     inherit! :search_paths

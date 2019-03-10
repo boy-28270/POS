@@ -75,7 +75,7 @@
             self.colorSegmentedControl.selectedSegmentIndex = 5;
         }
         NSString *imageUrl = [NSString stringWithFormat:@"https://ntineloveu.com%@", response[@"data"][@"image"]];
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imageUrl]];
         self.itemImage.image = [UIImage imageWithData:imageData];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
@@ -132,7 +132,7 @@
             self.colorSegmentedControl.selectedSegmentIndex = 5;
         }
         NSString *imageUrl = [NSString stringWithFormat:@"https://ntineloveu.com%@", response[@"data"][@"image"]];
-        NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrl]];
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:imageUrl]];
         self.itemImage.image = [UIImage imageWithData:imageData];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];

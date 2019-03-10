@@ -12,11 +12,13 @@
 #import "SummaryView.h"
 #import "Utils.h"
 #import "ScanBarcodeViewController.h"
+#import "TransactionViewController.h"
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, SelectItemViewDelegate>
+@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, SelectItemViewDelegate, SummaryViewDelegate, ScanBarcodeViewControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *totalAmountLabel;
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *discountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *receiveAmountTextField;
 
@@ -24,6 +26,8 @@
 
 @property (strong, nonatomic) SelectionItemView *selectionView;
 @property (strong, nonatomic) SummaryView *summaryView;
+
+@property (strong, nonatomic) NSMutableArray <HistoryModel *> *historyList;
 
 @end
 
@@ -35,11 +39,17 @@
     self.tabBarController.navigationItem.rightBarButtonItem = rightButton;
     
     self.circleView.layer.cornerRadius = self.circleView.frame.size.height/2;
+    self.historyList = [NSMutableArray array];
     self.totalAmount = 0.0;
     [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    
+    [self.discountTextField addTarget:self
+                  action:@selector(textFieldDidChange)
+        forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.codeTextField resignFirstResponder];
     [self.receiveAmountTextField resignFirstResponder];
     [self.discountTextField resignFirstResponder];
 }
@@ -58,28 +68,125 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view endEditing:YES];
     self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
     [self.selectionView show:YES];
+}
+
+- (void)textFieldDidChange {
+    if (![Utils isEmpty:self.discountTextField.text]) {
+        double total = self.totalAmount - [self.discountTextField.text doubleValue];
+        [self.totalAmountLabel setText:[NSString stringWithFormat:@"%.2f", total]];
+    } else {
+        [self.totalAmountLabel setText:[NSString stringWithFormat:@"%.2f", self.totalAmount]];
+    }
 }
 
 #pragma mark - Outlets
 
 - (void)refresh:(id)sender {
+    self.historyList = [NSMutableArray array];
     self.totalAmount = 0;
     [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.discountTextField setText:@""];
+    [self.receiveAmountTextField setText:@""];
+}
+
+- (IBAction)clickSearch:(id)sender {
+    NSString *code = self.codeTextField.text;
+    if ([Utils isEmpty:code]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"กรุณากรอกข้อมูลให้ครบถ้วน" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+        return;
+    }
+
+    NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryStock";
+    NSDictionary *parameters = @{
+                                 @"code": code
+                                 };
+    
+    [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
+        self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
+        [self.selectionView configurationWithCode:response[@"data"][@"code"]
+                                             name:response[@"data"][@"name"]
+                                         imageUrl:response[@"data"][@"image"]
+                                             size:response[@"data"][@"size"]
+                                            color:response[@"data"][@"color"]
+                                            price:response[@"data"][@"price"]];
+        [self.selectionView show:YES];
+    } andFailureBlock:^(NSDictionary * _Nonnull error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+    }];
+
 }
 
 - (IBAction)summary:(id)sender {
-    self.summaryView = [[SummaryView alloc] initWithTotalAmount:self.totalAmount discountAmount:[self.discountTextField.text doubleValue] amount:[self.receiveAmountTextField.text doubleValue]];
+    [self.view endEditing:YES];
+    
+    if ([Utils isEmpty:self.receiveAmountTextField.text]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"กรุณากรอกข้อมูลให้ครบถ้วน" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+        return;
+    }
+    
+    self.summaryView = [[SummaryView alloc] initWithTotalAmount:self.totalAmount discountAmount:[self.discountTextField.text doubleValue] amount:[self.receiveAmountTextField.text doubleValue] historyList:self.historyList delegate:self];
     [self.summaryView show:YES];
+}
+
+- (IBAction)clickBarcode:(id)sender {
+    ScanBarcodeViewController *vc = [[ScanBarcodeViewController alloc] initWithDelegate:self];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (IBAction)clickTransaction:(id)sender {
+    TransactionViewController *vc = [[TransactionViewController alloc] initWithHistoryList:self.historyList];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - SummaryViewDelegate
+
+- (void)summaryComplete {
+    self.historyList = [NSMutableArray array];
+    self.totalAmount = 0;
+    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.discountTextField setText:@""];
+    [self.receiveAmountTextField setText:@""];
 }
 
 #pragma mark - SelectItemViewDelegate
 
-- (void)totalAmount:(double)amount {
-    self.totalAmount += amount;
-    NSLog(@"%f", self.totalAmount);
+- (void)selectionDidSelected:(HistoryModel *)model {
+    self.totalAmount += model.totalPrice;
     [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.historyList addObject:model];
+}
+
+#pragma mark - ScanBarcodeViewControllerDelegate
+
+- (void)resultBarcode:(NSString *)text {
+    NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryStock";
+    NSDictionary *parameters = @{
+                                 @"code": text
+                                 };
+    
+    [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
+        self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
+        [self.selectionView configurationWithCode:response[@"data"][@"code"]
+                                             name:response[@"data"][@"name"]
+                                         imageUrl:response[@"data"][@"image"]
+                                             size:response[@"data"][@"size"]
+                                            color:response[@"data"][@"color"]
+                                            price:response[@"data"][@"price"]];
+        [self performSelector:@selector(showPopup) withObject:text afterDelay:0.1];
+    } andFailureBlock:^(NSDictionary * _Nonnull error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+    }];
+}
+
+- (void)showPopup {
+    [self.selectionView show:YES];
 }
 
 @end

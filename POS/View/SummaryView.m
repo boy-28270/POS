@@ -18,20 +18,38 @@
 @property (weak, nonatomic) IBOutlet UILabel *changeAmountLabel;
 @property (weak, nonatomic) IBOutlet UIView *popupView;
 
+@property (weak, nonatomic) id<SummaryViewDelegate> delegate;
+@property (strong, nonatomic) NSString *summaryAmount;
+@property (strong, nonatomic) NSString *totalAmount;
+@property (strong, nonatomic) NSString *receiveAmount;
+@property (strong, nonatomic) NSString *discountAmount;
+@property (strong, nonatomic) NSString *changeAmount;
+@property (strong, nonatomic) NSMutableArray <HistoryModel *> *historyList;
+
 @end
 
 @implementation SummaryView
 
-- (instancetype)initWithTotalAmount:(double)totalAmount discountAmount:(double)discountAmount amount:(double)amount {
+- (instancetype)initWithTotalAmount:(double)totalAmount discountAmount:(double)discountAmount amount:(double)amount historyList:(NSMutableArray <HistoryModel *> *)historyList delegate:(id<SummaryViewDelegate>)delegate {
     self = [[[NSBundle mainBundle] loadNibNamed:@"SummaryView" owner:self options:nil] objectAtIndex:0];
     if (self) {
         self.frame = [[UIScreen mainScreen] bounds];
         
+        self.delegate = delegate;
+        
+        self.historyList = historyList;
+        
+        self.summaryAmount = [NSString stringWithFormat:@"%.2f", totalAmount-discountAmount];
+        self.totalAmount = [NSString stringWithFormat:@"%.2f", totalAmount];
+        self.receiveAmount = [NSString stringWithFormat:@"%.2f", amount];
+        self.discountAmount = [NSString stringWithFormat:@"%.2f", discountAmount];
+        self.changeAmount = [NSString stringWithFormat:@"%.2f", amount-totalAmount+discountAmount];
+
         [self.summaryAmountLabel setText:[Utils formatNumberWithNumber:totalAmount-discountAmount]];
         [self.totalAmountLabel setText:[Utils formatNumberWithNumber:totalAmount]];
         [self.receiveAmountLabel setText:[Utils formatNumberWithNumber:amount]];
         [self.discountAmountLabel setText:[Utils formatNumberWithNumber:discountAmount]];
-        [self.changeAmountLabel setText:[Utils formatNumberWithNumber:amount-totalAmount-discountAmount]];
+        [self.changeAmountLabel setText:[Utils formatNumberWithNumber:amount-totalAmount+discountAmount]];
     }
     return self;
 }
@@ -64,6 +82,28 @@
 
 - (IBAction)calculate:(id)sender {
     [self show:NO];
+    
+    NSMutableArray <NSDictionary *> *array = [NSMutableArray array];
+    
+    double item = 0;
+    for (HistoryModel *model in self.historyList) {
+        item += model.item;
+        [array addObject:[model getDictionary]];
+    }
+    
+    NSDictionary *parameters = @{
+                               @"totalItem" : [NSString stringWithFormat:@"%.0f", item],
+                               @"totalPrice" : self.totalAmount,
+                               @"discount" : self.discountAmount,
+                               @"summary" : self.summaryAmount,
+                               @"receive" : self.receiveAmount,
+                               @"change" : self.changeAmount,
+                               @"items" : array
+                               };
+    
+    NSLog(@"%@", parameters);
+    
+    [self.delegate summaryComplete];
 }
 
 @end

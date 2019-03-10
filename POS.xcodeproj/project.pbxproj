@@ -35,6 +35,12 @@
 		D2F0A3F522348E8600197472 /* StockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3F422348E8600197472 /* StockViewController.m */; };
 		D2F0A3F822348EA700197472 /* StockTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3F722348EA700197472 /* StockTableViewCell.m */; };
 		D2F0A3FB22348FA800197472 /* ImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3FA22348FA800197472 /* ImageCollectionViewCell.m */; };
+		D2F0A4022235428500197472 /* HistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A4012235428500197472 /* HistoryModel.m */; };
+		D2F0A4092235585900197472 /* TransactionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A4072235585900197472 /* TransactionViewController.m */; };
+		D2F0A40A2235585900197472 /* TransactionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F0A4082235585900197472 /* TransactionViewController.xib */; };
+		D2F0A40E223558CD00197472 /* TransactionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A40C223558CD00197472 /* TransactionTableViewCell.m */; };
+		D2F0A40F223558CD00197472 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2F0A40D223558CD00197472 /* TransactionTableViewCell.xib */; };
+		D2F0A41122356C7500197472 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F0A41022356C7400197472 /* placeholder.png */; };
 		D9325F7EA07411A75FFBBFAA /* libPods-POSUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25CF10D664450E710123A647 /* libPods-POSUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -93,7 +99,6 @@
 		D2B0EA7C2222A3FC005A6F12 /* IMG_3501.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3501.JPG; sourceTree = "<group>"; };
 		D2B0EA7D2222A3FC005A6F12 /* IMG_3495.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3495.JPG; sourceTree = "<group>"; };
 		D2B0EA7E2222A3FC005A6F12 /* IMG_3500.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_3500.JPG; sourceTree = "<group>"; };
-		D2B0EA942222DBDC005A6F12 /* SelectItemViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectItemViewDelegate.h; sourceTree = "<group>"; };
 		D2B0EA952222E3C6005A6F12 /* SummaryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SummaryView.h; sourceTree = "<group>"; };
 		D2B0EA962222E3C6005A6F12 /* SummaryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SummaryView.m; sourceTree = "<group>"; };
 		D2B0EA982222E3D5005A6F12 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
@@ -107,6 +112,15 @@
 		D2F0A3F722348EA700197472 /* StockTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StockTableViewCell.m; sourceTree = "<group>"; };
 		D2F0A3F922348FA800197472 /* ImageCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewCell.h; sourceTree = "<group>"; };
 		D2F0A3FA22348FA800197472 /* ImageCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewCell.m; sourceTree = "<group>"; };
+		D2F0A4002235428500197472 /* HistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryModel.h; sourceTree = "<group>"; };
+		D2F0A4012235428500197472 /* HistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryModel.m; sourceTree = "<group>"; };
+		D2F0A4062235585900197472 /* TransactionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionViewController.h; sourceTree = "<group>"; };
+		D2F0A4072235585900197472 /* TransactionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionViewController.m; sourceTree = "<group>"; };
+		D2F0A4082235585900197472 /* TransactionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionViewController.xib; sourceTree = "<group>"; };
+		D2F0A40B223558CD00197472 /* TransactionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionTableViewCell.h; sourceTree = "<group>"; };
+		D2F0A40C223558CD00197472 /* TransactionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionTableViewCell.m; sourceTree = "<group>"; };
+		D2F0A40D223558CD00197472 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
+		D2F0A41022356C7400197472 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		D376F25584FC95921F308641 /* Pods-POS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POS.debug.xcconfig"; path = "Target Support Files/Pods-POS/Pods-POS.debug.xcconfig"; sourceTree = "<group>"; };
 		D64761436B06FB68D24B88CA /* libPods-POS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-POS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -185,6 +199,7 @@
 			children = (
 				D2B0EA922222DB58005A6F12 /* Common */,
 				D2B0EA6B2221D4D5005A6F12 /* Images */,
+				D2F0A3FF2235426200197472 /* Model */,
 				D2B0EA912222DB41005A6F12 /* View */,
 				D2B0EA932222DB78005A6F12 /* ViewController */,
 				D2B0EA8F2222DAFF005A6F12 /* Protocol */,
@@ -225,6 +240,7 @@
 				D2B0EA7E2222A3FC005A6F12 /* IMG_3500.JPG */,
 				D2B0EA7C2222A3FC005A6F12 /* IMG_3501.JPG */,
 				D2F0A3EB22345CEF00197472 /* octo.png */,
+				D2F0A41022356C7400197472 /* placeholder.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -232,7 +248,6 @@
 		D2B0EA8F2222DAFF005A6F12 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				D2B0EA942222DBDC005A6F12 /* SelectItemViewDelegate.h */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -248,6 +263,9 @@
 				D2B0EA982222E3D5005A6F12 /* SummaryView.xib */,
 				D2F0A3F622348EA700197472 /* StockTableViewCell.h */,
 				D2F0A3F722348EA700197472 /* StockTableViewCell.m */,
+				D2F0A40B223558CD00197472 /* TransactionTableViewCell.h */,
+				D2F0A40C223558CD00197472 /* TransactionTableViewCell.m */,
+				D2F0A40D223558CD00197472 /* TransactionTableViewCell.xib */,
 				D2F0A3F922348FA800197472 /* ImageCollectionViewCell.h */,
 				D2F0A3FA22348FA800197472 /* ImageCollectionViewCell.m */,
 			);
@@ -277,8 +295,20 @@
 				D2452255222A7818005E3B3B /* ScanBarcodeViewController.h */,
 				D2452256222A7819005E3B3B /* ScanBarcodeViewController.m */,
 				D2452257222A7819005E3B3B /* ScanBarcodeViewController.xib */,
+				D2F0A4062235585900197472 /* TransactionViewController.h */,
+				D2F0A4072235585900197472 /* TransactionViewController.m */,
+				D2F0A4082235585900197472 /* TransactionViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D2F0A3FF2235426200197472 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2F0A4002235428500197472 /* HistoryModel.h */,
+				D2F0A4012235428500197472 /* HistoryModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D728CDE4740EEFC3B4D30A5C /* Pods */ = {
@@ -404,6 +434,7 @@
 				D245225F222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png in Resources */,
 				D2B0EA392221B04D005A6F12 /* Assets.xcassets in Resources */,
 				D2F0A3E62234280700197472 /* icons8-search-50.png in Resources */,
+				D2F0A40F223558CD00197472 /* TransactionTableViewCell.xib in Resources */,
 				D2B0EA802222A3FC005A6F12 /* IMG_3495.JPG in Resources */,
 				D2B0EA992222E3D5005A6F12 /* SummaryView.xib in Resources */,
 				D2B0EA7F2222A3FC005A6F12 /* IMG_3501.JPG in Resources */,
@@ -411,6 +442,8 @@
 				D2F0A3EC22345CF000197472 /* octo.png in Resources */,
 				D2B0EA372221B04B005A6F12 /* Main.storyboard in Resources */,
 				D2B0EA7522227AAE005A6F12 /* SelectionItemView.xib in Resources */,
+				D2F0A40A2235585900197472 /* TransactionViewController.xib in Resources */,
+				D2F0A41122356C7500197472 /* placeholder.png in Resources */,
 				D2452259222A7819005E3B3B /* ScanBarcodeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,9 +546,12 @@
 				D2F0A3E42232BE2400197472 /* AddStockFirstViewController.m in Sources */,
 				D2B0EA972222E3C6005A6F12 /* SummaryView.m in Sources */,
 				D2B0EA312221B04B005A6F12 /* AppDelegate.m in Sources */,
+				D2F0A4022235428500197472 /* HistoryModel.m in Sources */,
 				D2B0EA7322227A8B005A6F12 /* SelectionItemView.m in Sources */,
+				D2F0A4092235585900197472 /* TransactionViewController.m in Sources */,
 				D2F0A3F822348EA700197472 /* StockTableViewCell.m in Sources */,
 				D2F0A3FB22348FA800197472 /* ImageCollectionViewCell.m in Sources */,
+				D2F0A40E223558CD00197472 /* TransactionTableViewCell.m in Sources */,
 				D2F0A3F522348E8600197472 /* StockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

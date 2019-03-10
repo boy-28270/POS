@@ -78,13 +78,15 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Awa-Nf-JuX">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Awa-Nf-JuX">
                             <rect key="frame" x="16" y="198" width="382" height="29"/>
                             <segments>
                                 <segment title="ดำ"/>
                                 <segment title="ขาว"/>
                                 <segment title="กรม"/>
+                                <segment title="เขียว"/>
                                 <segment title="แดง"/>
+                                <segment title="เทา"/>
                             </segments>
                         </segmentedControl>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-75-5Jk">
@@ -100,7 +102,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vLR-L8-Udr">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vLR-L8-Udr">
                             <rect key="frame" x="16" y="288" width="382" height="29"/>
                             <segments>
                                 <segment title="S"/>
@@ -188,9 +190,13 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="colorSegmentedControl" destination="Awa-Nf-JuX" id="Ru7-VO-3YJ"/>
                 <outlet property="itemLabel" destination="q66-Qm-sZk" id="3i9-aK-x74"/>
+                <outlet property="itemStepper" destination="0OK-a1-G4W" id="e6E-Iw-cBw"/>
                 <outlet property="nameLabel" destination="lut-nm-XOP" id="aig-Ql-HsV"/>
                 <outlet property="popupView" destination="rup-4L-bVi" id="Pgg-Fd-ocY"/>
+                <outlet property="profileImageView" destination="DGc-gx-Z3C" id="BiE-eF-Mmh"/>
+                <outlet property="sizeSegmentedControl" destination="vLR-L8-Udr" id="wny-cI-7wS"/>
                 <outlet property="totalAmountLabel" destination="vdO-2Y-4YM" id="eKZ-gr-EJQ"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="111.83035714285714"/>

@@ -249,8 +249,8 @@
         self.scanning = YES;
         [self.capture start];
     } else {
-        [self.delegate resultBarcode:self.resultText];
         [self.navigationController popViewControllerAnimated:YES];
+        [self.delegate resultBarcode:self.resultText];
     }
 }
 

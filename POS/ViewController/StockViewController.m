@@ -10,11 +10,13 @@
 #import "StockTableViewCell.h"
 #import "Utils.h"
 
-@interface StockViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface StockViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *array;
+@property (strong, nonatomic) NSMutableArray <NSDictionary *> *searchResults;
 
 @end
 
@@ -25,6 +27,7 @@
     
     self.tableView.tableFooterView = [UIView new];
     self.array = [NSMutableArray array];
+    self.searchResults = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -37,6 +40,7 @@
         for (NSDictionary *dict in temp) {
             [self.array addObject:dict];
         }
+        self.searchResults = [self.array mutableCopy];
         [self.tableView reloadData];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
@@ -47,24 +51,55 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.array count];
+    return [self.searchResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    StockTableViewCell *cell = (StockTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"StockTableViewCell"];
-    [cell configurationWithName:self.array[indexPath.row][@"name"]
-                       imageUrl:self.array[indexPath.row][@"image"]
-                          sizeS:self.array[indexPath.row][@"S"]
-                          sizeM:self.array[indexPath.row][@"M"]
-                          sizeL:self.array[indexPath.row][@"L"]
-                         sizeXL:self.array[indexPath.row][@"XL"]];
+    StockTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StockTableViewCell" forIndexPath:indexPath];
+    [cell configurationWithName:self.searchResults[indexPath.row][@"name"]
+                       imageUrl:self.searchResults[indexPath.row][@"image"]
+                          sizeS:self.searchResults[indexPath.row][@"S"]
+                          sizeM:self.searchResults[indexPath.row][@"M"]
+                          sizeL:self.searchResults[indexPath.row][@"L"]
+                         sizeXL:self.searchResults[indexPath.row][@"XL"]];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([Utils isEmpty:searchText]) {
+        self.searchResults = [self.array mutableCopy];
+    } else {
+        [self.searchResults removeAllObjects];
+        NSMutableArray <NSDictionary *> *searchArray = [[NSMutableArray alloc] init];
+        
+        [searchArray addObjectsFromArray:self.array];
+        
+        for (NSDictionary *dict in searchArray) {
+            NSString *objectName = dict[@"name"];
+            NSRange resultsRange = [objectName rangeOfString:searchText options:NSCaseInsensitiveSearch];
+            
+            if (resultsRange.length > 0)
+                [self.searchResults addObject:dict];
+        }
+        searchArray = nil;
+    }
+    [self.tableView reloadData];
 }
 
 @end

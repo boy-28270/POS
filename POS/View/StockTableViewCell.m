@@ -7,6 +7,7 @@
 //
 
 #import "StockTableViewCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface StockTableViewCell()
 
@@ -37,8 +38,7 @@
                        sizeXL:(NSString *)sizeXL {
     [self.nameLabel setText:name];
     NSString *image = [NSString stringWithFormat:@"https://ntineloveu.com%@", imageUrl];
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: image]];
-    self.profileImageView.image = [UIImage imageWithData:imageData];
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:image] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     self.sizeSLabel.text = [NSString stringWithFormat:@"S = %@", sizeS];
     self.sizeMLabel.text = [NSString stringWithFormat:@"M = %@", sizeM];
     self.sizeLLabel.text = [NSString stringWithFormat:@"L = %@", sizeL];
