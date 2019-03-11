@@ -48,6 +48,16 @@
         forControlEvents:UIControlEventEditingChanged];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    if (self.historyList != nil) {
+        self.totalAmount = 0;
+        for (HistoryModel *model in self.historyList) {
+            self.totalAmount += model.totalPrice;
+        }
+        [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    }
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.codeTextField resignFirstResponder];
     [self.receiveAmountTextField resignFirstResponder];
@@ -85,6 +95,8 @@
 #pragma mark - Outlets
 
 - (void)refresh:(id)sender {
+    [self.view endEditing:YES];
+
     self.historyList = [NSMutableArray array];
     self.totalAmount = 0;
     [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
@@ -93,6 +105,8 @@
 }
 
 - (IBAction)clickSearch:(id)sender {
+    [self.view endEditing:YES];
+
     NSString *code = self.codeTextField.text;
     if ([Utils isEmpty:code]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"กรุณากรอกข้อมูลให้ครบถ้วน" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
@@ -108,11 +122,13 @@
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
         self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
         [self.selectionView configurationWithCode:response[@"data"][@"code"]
-                                             name:response[@"data"][@"name"]
-                                         imageUrl:response[@"data"][@"image"]
-                                             size:response[@"data"][@"size"]
-                                            color:response[@"data"][@"color"]
-                                            price:response[@"data"][@"price"]];
+                                              name:response[@"data"][@"name"]
+                                          imageUrl:response[@"data"][@"image"]
+                                              item:response[@"data"][@"item"]
+                                              size:response[@"data"][@"size"]
+                                             color:response[@"data"][@"color"]
+                                             price:response[@"data"][@"price"]
+                                            index:0];
         [self.selectionView show:YES];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
@@ -135,11 +151,15 @@
 }
 
 - (IBAction)clickBarcode:(id)sender {
+    [self.view endEditing:YES];
+
     ScanBarcodeViewController *vc = [[ScanBarcodeViewController alloc] initWithDelegate:self];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)clickTransaction:(id)sender {
+    [self.view endEditing:YES];
+
     TransactionViewController *vc = [[TransactionViewController alloc] initWithHistoryList:self.historyList];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -156,7 +176,7 @@
 
 #pragma mark - SelectItemViewDelegate
 
-- (void)selectionDidSelected:(HistoryModel *)model {
+- (void)selectionDidSelected:(HistoryModel *)model index:(NSNumber *)index{
     self.totalAmount += model.totalPrice;
     [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
     [self.historyList addObject:model];
@@ -175,9 +195,11 @@
         [self.selectionView configurationWithCode:response[@"data"][@"code"]
                                              name:response[@"data"][@"name"]
                                          imageUrl:response[@"data"][@"image"]
+                                             item:response[@"data"][@"item"]
                                              size:response[@"data"][@"size"]
                                             color:response[@"data"][@"color"]
-                                            price:response[@"data"][@"price"]];
+                                            price:response[@"data"][@"price"]
+                                            index:0];
         [self performSelector:@selector(showPopup) withObject:text afterDelay:0.1];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];

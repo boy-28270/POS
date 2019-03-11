@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol SelectItemViewDelegate <NSObject>
 
-- (void)selectionDidSelected:(HistoryModel *)model;
+- (void)selectionDidSelected:(HistoryModel *)model index:(long)index;
 
 @end
 
@@ -23,9 +23,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)configurationWithCode:(NSString *)code
                          name:(NSString *)name
                      imageUrl:(NSString *)imageUrl
+                         item:(NSString *)item
                          size:(NSString *)size
                         color:(NSString *)color
-                        price:(NSString *)price;
+                        price:(NSString *)price
+                        index:(long)index;
+- (void)configurationWithModel:(HistoryModel *)model index:(long)index;
 - (void)show:(BOOL)isShow;
 
 @end

@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(strong, nonatomic) NSString *size;
 @property(strong, nonatomic) NSString *color;
 @property(assign, nonatomic) double item;
+@property(assign, nonatomic) double maxItem;
 @property(assign, nonatomic) double price;
 @property(assign, nonatomic) double totalPrice;
 

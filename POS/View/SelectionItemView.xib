@@ -190,6 +190,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="addButton" destination="sId-f5-yp4" id="BI0-oD-Baf"/>
                 <outlet property="colorSegmentedControl" destination="Awa-Nf-JuX" id="Ru7-VO-3YJ"/>
                 <outlet property="itemLabel" destination="q66-Qm-sZk" id="3i9-aK-x74"/>
                 <outlet property="itemStepper" destination="0OK-a1-G4W" id="e6E-Iw-cBw"/>

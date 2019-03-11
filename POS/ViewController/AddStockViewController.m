@@ -170,7 +170,7 @@
 
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"สำเร็จ" message:@"เพิ่มข้อมูลเรียบร้อย" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
-        alert.tag = 0;
+        alert.tag = 123;
         [alert show];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
@@ -181,17 +181,16 @@
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (alertView.tag == 0) {
-        if (buttonIndex == 0){
-            [self.codeTextField setText:@""];
-            [self.nameTextField setText:@""];
-            [self.priceTextField setText:@""];
-            [self.capitalPriceTextField setText:@""];
-            [self.itemImage setImage:nil];
-            self.sizeSegmentedControl.selectedSegmentIndex = 0;
-            self.colorSegmentedControl.selectedSegmentIndex = 0;
-            [self.itemStepper setValue:1];
-        }
+    if (buttonIndex == 0){
+        [self.codeTextField setText:@""];
+        [self.nameTextField setText:@""];
+        [self.priceTextField setText:@""];
+        [self.capitalPriceTextField setText:@""];
+        [self.itemImage setImage:nil];
+        self.sizeSegmentedControl.selectedSegmentIndex = 0;
+        self.colorSegmentedControl.selectedSegmentIndex = 0;
+        [self.itemLabel setText:@"1"];
+        [self.itemStepper setValue:1];
     }
 }
 

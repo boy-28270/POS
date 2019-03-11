@@ -8,11 +8,13 @@
 
 #import "TransactionViewController.h"
 #import "TransactionTableViewCell.h"
+#import "SelectionItemView.h"
 
-@interface TransactionViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TransactionViewController () <UITableViewDelegate, UITableViewDataSource, SelectItemViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) SelectionItemView *selectionView;
 @property (strong, nonatomic) NSMutableArray <HistoryModel *> *historyList;
 
 @end
@@ -42,6 +44,13 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - SelectItemViewDelegate
+
+- (void)selectionDidSelected:(HistoryModel *)model index:(long)index {
+    [self.historyList replaceObjectAtIndex:index withObject:model];
+    [self.tableView reloadData];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -56,13 +65,32 @@
                            item:self.historyList[indexPath.row].item
                           price:self.historyList[indexPath.row].price
                      totalPrice:(double)self.historyList[indexPath.row].totalPrice];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
+    [self.selectionView configurationWithModel:self.historyList[indexPath.row] index:indexPath.row];
+    [self.selectionView show:YES];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [self.historyList removeObjectAtIndex:indexPath.row];
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+        [tableView endUpdates];
+        
+    }
 }
 
 @end

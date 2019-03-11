@@ -10,7 +10,7 @@
 #import "ScanBarcodeViewController.h"
 #import "Utils.h"
 
-@interface AddStockFirstViewController () <ScanBarcodeViewControllerDelegate>
+@interface AddStockFirstViewController () <ScanBarcodeViewControllerDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
@@ -86,5 +86,17 @@
         [alert show];
     }];
  }
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0){
+        [self.codeTextField setText:@""];
+        [self.nameTextField setText:@""];
+        [self.itemImage setImage:nil];
+        [self.sizeSegmentedControl setSelectedSegmentIndex:-1];
+        [self.colorSegmentedControl setSelectedSegmentIndex:-1];
+    }
+}
 
 @end
