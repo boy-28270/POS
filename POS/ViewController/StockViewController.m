@@ -28,10 +28,6 @@
     self.tableView.tableFooterView = [UIView new];
     self.array = [NSMutableArray array];
     self.searchResults = [NSMutableArray array];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryListStock";
     NSDictionary *parameters = @{};
@@ -46,6 +42,10 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 #pragma mark - UITableViewDataSource
