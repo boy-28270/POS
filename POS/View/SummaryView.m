@@ -9,7 +9,7 @@
 #import "SummaryView.h"
 #import "Utils.h"
 
-@interface SummaryView()
+@interface SummaryView() <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *summaryAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalAmountLabel;
@@ -25,6 +25,8 @@
 @property (strong, nonatomic) NSString *discountAmount;
 @property (strong, nonatomic) NSString *changeAmount;
 @property (strong, nonatomic) NSMutableArray <HistoryModel *> *historyList;
+
+@property (strong, nonatomic) UIAlertView *alert;
 
 @end
 
@@ -81,8 +83,6 @@
 }
 
 - (IBAction)calculate:(id)sender {
-    [self show:NO];
-    
     NSMutableArray <NSDictionary *> *array = [NSMutableArray array];
     
     double item = 0;
@@ -91,6 +91,7 @@
         [array addObject:[model getDictionary]];
     }
     
+    NSString *URLString = @"https://ntineloveu.com/api/pos/buyItem";
     NSDictionary *parameters = @{
                                @"totalItem" : [NSString stringWithFormat:@"%.0f", item],
                                @"totalPrice" : self.totalAmount,
@@ -101,9 +102,24 @@
                                @"items" : array
                                };
     
-    NSLog(@"%@", parameters);
-    
-    [self.delegate summaryComplete];
+    [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
+        self.alert = [[UIAlertView alloc] initWithTitle:@"สำเร็จ" message:response[@"msg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [self.alert show];
+    } andFailureBlock:^(NSDictionary * _Nonnull error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+    }];
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (self.alert == alertView) {
+        if (buttonIndex == 0){
+            [self show:NO];
+            [self.delegate summaryComplete];
+        }
+    }
 }
 
 @end

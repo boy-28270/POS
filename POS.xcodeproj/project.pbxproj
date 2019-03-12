@@ -29,6 +29,10 @@
 		D2B0EA812222A3FC005A6F12 /* IMG_3500.JPG in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA7E2222A3FC005A6F12 /* IMG_3500.JPG */; };
 		D2B0EA972222E3C6005A6F12 /* SummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA962222E3C6005A6F12 /* SummaryView.m */; };
 		D2B0EA992222E3D5005A6F12 /* SummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA982222E3D5005A6F12 /* SummaryView.xib */; };
+		D2D8718E2238212D00C7890C /* icons8-transaction-list-26.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8718C2238212D00C7890C /* icons8-transaction-list-26.png */; };
+		D2D87194223821E800C7890C /* icons8-pos-terminal-filled-26.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D87193223821E700C7890C /* icons8-pos-terminal-filled-26.png */; };
+		D2D871972238249E00C7890C /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871962238249E00C7890C /* HistoryViewController.m */; };
+		D2D8719A2238263D00C7890C /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871992238263D00C7890C /* HistoryTableViewCell.m */; };
 		D2F0A3E42232BE2400197472 /* AddStockFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2F0A3E32232BE2400197472 /* AddStockFirstViewController.m */; };
 		D2F0A3E62234280700197472 /* icons8-search-50.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F0A3E52234280500197472 /* icons8-search-50.png */; };
 		D2F0A3EC22345CF000197472 /* octo.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F0A3EB22345CEF00197472 /* octo.png */; };
@@ -102,6 +106,12 @@
 		D2B0EA952222E3C6005A6F12 /* SummaryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SummaryView.h; sourceTree = "<group>"; };
 		D2B0EA962222E3C6005A6F12 /* SummaryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SummaryView.m; sourceTree = "<group>"; };
 		D2B0EA982222E3D5005A6F12 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
+		D2D8718C2238212D00C7890C /* icons8-transaction-list-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-transaction-list-26.png"; sourceTree = "<group>"; };
+		D2D87193223821E700C7890C /* icons8-pos-terminal-filled-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-pos-terminal-filled-26.png"; sourceTree = "<group>"; };
+		D2D871952238249E00C7890C /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		D2D871962238249E00C7890C /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		D2D871982238263D00C7890C /* HistoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		D2D871992238263D00C7890C /* HistoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
 		D2F0A3E22232BE2400197472 /* AddStockFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddStockFirstViewController.h; sourceTree = "<group>"; };
 		D2F0A3E32232BE2400197472 /* AddStockFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddStockFirstViewController.m; sourceTree = "<group>"; };
 		D2F0A3E52234280500197472 /* icons8-search-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-search-50.png"; sourceTree = "<group>"; };
@@ -168,6 +178,8 @@
 			children = (
 				D245225E222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png */,
 				D2F0A3E52234280500197472 /* icons8-search-50.png */,
+				D2D8718C2238212D00C7890C /* icons8-transaction-list-26.png */,
+				D2D87193223821E700C7890C /* icons8-pos-terminal-filled-26.png */,
 			);
 			path = icon;
 			sourceTree = "<group>";
@@ -266,6 +278,8 @@
 				D2F0A40B223558CD00197472 /* TransactionTableViewCell.h */,
 				D2F0A40C223558CD00197472 /* TransactionTableViewCell.m */,
 				D2F0A40D223558CD00197472 /* TransactionTableViewCell.xib */,
+				D2D871982238263D00C7890C /* HistoryTableViewCell.h */,
+				D2D871992238263D00C7890C /* HistoryTableViewCell.m */,
 				D2F0A3F922348FA800197472 /* ImageCollectionViewCell.h */,
 				D2F0A3FA22348FA800197472 /* ImageCollectionViewCell.m */,
 			);
@@ -292,6 +306,8 @@
 				D2F0A3E32232BE2400197472 /* AddStockFirstViewController.m */,
 				D2F0A3F322348E8600197472 /* StockViewController.h */,
 				D2F0A3F422348E8600197472 /* StockViewController.m */,
+				D2D871952238249E00C7890C /* HistoryViewController.h */,
+				D2D871962238249E00C7890C /* HistoryViewController.m */,
 				D2452255222A7818005E3B3B /* ScanBarcodeViewController.h */,
 				D2452256222A7819005E3B3B /* ScanBarcodeViewController.m */,
 				D2452257222A7819005E3B3B /* ScanBarcodeViewController.xib */,
@@ -431,12 +447,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2B0EA3C2221B04D005A6F12 /* LaunchScreen.storyboard in Resources */,
+				D2D8718E2238212D00C7890C /* icons8-transaction-list-26.png in Resources */,
 				D245225F222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png in Resources */,
 				D2B0EA392221B04D005A6F12 /* Assets.xcassets in Resources */,
 				D2F0A3E62234280700197472 /* icons8-search-50.png in Resources */,
 				D2F0A40F223558CD00197472 /* TransactionTableViewCell.xib in Resources */,
 				D2B0EA802222A3FC005A6F12 /* IMG_3495.JPG in Resources */,
 				D2B0EA992222E3D5005A6F12 /* SummaryView.xib in Resources */,
+				D2D87194223821E800C7890C /* icons8-pos-terminal-filled-26.png in Resources */,
 				D2B0EA7F2222A3FC005A6F12 /* IMG_3501.JPG in Resources */,
 				D2B0EA812222A3FC005A6F12 /* IMG_3500.JPG in Resources */,
 				D2F0A3EC22345CF000197472 /* octo.png in Resources */,
@@ -541,6 +559,8 @@
 				D2B0EA342221B04B005A6F12 /* ViewController.m in Sources */,
 				D2B0EA3F2221B04D005A6F12 /* main.m in Sources */,
 				D2452258222A7819005E3B3B /* ScanBarcodeViewController.m in Sources */,
+				D2D871972238249E00C7890C /* HistoryViewController.m in Sources */,
+				D2D8719A2238263D00C7890C /* HistoryTableViewCell.m in Sources */,
 				D245225C222AB4C6005E3B3B /* AddStockViewController.m in Sources */,
 				D2B0EA7B22229E9A005A6F12 /* Utils.m in Sources */,
 				D2F0A3E42232BE2400197472 /* AddStockFirstViewController.m in Sources */,

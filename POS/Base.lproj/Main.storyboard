@@ -195,9 +195,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="STOCK" id="HGN-kO-Hm8"/>
                     <navigationItem key="navigationItem" title="เพิ่มสินค้า" leftItemsSupplementBackButton="YES" id="7cc-Ok-ut0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="e0w-EF-etp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="e0w-EF-etp">
                             <connections>
-                                <segue destination="2eK-rA-pUL" kind="push" id="77x-QK-Kes"/>
+                                <segue destination="2eK-rA-pUL" kind="push" id="v9l-oq-7pF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -217,7 +217,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V51-7F-deY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="-969"/>
+            <point key="canvasLocation" x="3266" y="504"/>
         </scene>
         <!--บันทึกสินค้า-->
         <scene sceneID="ZWP-wQ-Uni">
@@ -365,12 +365,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ziA-2V-P98" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2481" y="-969"/>
+            <point key="canvasLocation" x="4041" y="504"/>
         </scene>
-        <!--STOCK-->
+        <!--TRANSACTION-->
         <scene sceneID="F0S-9u-M39">
             <objects>
-                <viewController id="Pfd-ZS-VgM" sceneMemberID="viewController">
+                <viewController id="Pfd-ZS-VgM" customClass="HistoryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vdS-oF-Rd7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -387,28 +387,108 @@
                                 </state>
                                 <connections>
                                     <action selector="summary:" destination="3ZC-4y-QpE" eventType="touchUpInside" id="gwp-4V-Tbg"/>
-                                    <segue destination="Zkj-RH-Ij6" kind="show" id="8tN-3i-CbS"/>
+                                    <segue destination="Zkj-RH-Ij6" kind="push" id="975-qQ-7vR"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WZg-6Z-bpw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="120" id="5es-7O-kcr" customClass="HistoryTableViewCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5es-7O-kcr" id="0JX-82-qdt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.66666666666667"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 มีนาคม 2562" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCS-ZN-dQt">
+                                                    <rect key="frame" x="23" y="20.333333333333332" width="119" height="20.999999999999996"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJf-Q5-Lrq">
+                                                    <rect key="frame" x="280" y="20.333333333333332" width="72" height="20.999999999999996"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="จำนวน" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVB-F2-xE7">
+                                                    <rect key="frame" x="23" y="49.333333333333336" width="48" height="21.000000000000007"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyE-UQ-FTJ">
+                                                    <rect key="frame" x="341" y="49.333333333333336" width="11" height="21.000000000000007"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ราคารวม" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vL-8a-gnC">
+                                                    <rect key="frame" x="23" y="78.333333333333329" width="64" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="฿480.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6Y-aO-VDq">
+                                                    <rect key="frame" x="286" y="78.333333333333329" width="66" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lJf-Q5-Lrq" secondAttribute="trailing" constant="8" id="74t-y4-DS6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="k6Y-aO-VDq" secondAttribute="trailing" constant="8" id="8jW-ll-M2h"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="PyE-UQ-FTJ" secondAttribute="trailing" constant="8" id="H7k-UU-gme"/>
+                                                <constraint firstItem="6vL-8a-gnC" firstAttribute="top" secondItem="NVB-F2-xE7" secondAttribute="bottom" constant="8" id="ISd-Us-ZIl"/>
+                                                <constraint firstItem="NVB-F2-xE7" firstAttribute="centerY" secondItem="0JX-82-qdt" secondAttribute="centerY" id="LZx-ZH-EEd"/>
+                                                <constraint firstItem="PyE-UQ-FTJ" firstAttribute="centerY" secondItem="NVB-F2-xE7" secondAttribute="centerY" id="Tgg-js-aZU"/>
+                                                <constraint firstItem="NVB-F2-xE7" firstAttribute="leading" secondItem="0JX-82-qdt" secondAttribute="leadingMargin" constant="8" id="ZlW-O9-G2D"/>
+                                                <constraint firstItem="lJf-Q5-Lrq" firstAttribute="centerY" secondItem="nCS-ZN-dQt" secondAttribute="centerY" id="brk-UK-qwv"/>
+                                                <constraint firstItem="nCS-ZN-dQt" firstAttribute="leading" secondItem="0JX-82-qdt" secondAttribute="leadingMargin" constant="8" id="eEt-aU-GsM"/>
+                                                <constraint firstItem="k6Y-aO-VDq" firstAttribute="centerY" secondItem="6vL-8a-gnC" secondAttribute="centerY" id="jjj-iR-VDN"/>
+                                                <constraint firstItem="NVB-F2-xE7" firstAttribute="top" secondItem="nCS-ZN-dQt" secondAttribute="bottom" constant="8" id="qLr-u2-1el"/>
+                                                <constraint firstItem="6vL-8a-gnC" firstAttribute="leading" secondItem="0JX-82-qdt" secondAttribute="leadingMargin" constant="8" id="wFE-eV-t0f"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="nCS-ZN-dQt" id="7YR-f9-jiF"/>
+                                            <outlet property="timeLabel" destination="lJf-Q5-Lrq" id="JNj-JX-F4R"/>
+                                            <outlet property="totalItemLabel" destination="PyE-UQ-FTJ" id="TfX-M3-cP4"/>
+                                            <outlet property="totalPriceLabel" destination="k6Y-aO-VDq" id="rGC-CT-7D8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Pfd-ZS-VgM" id="rd6-Y4-abm"/>
+                                    <outlet property="delegate" destination="Pfd-ZS-VgM" id="GM8-6q-pex"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="WZg-6Z-bpw" firstAttribute="top" secondItem="Lzg-WO-ca0" secondAttribute="top" id="5ck-QZ-mGJ"/>
+                            <constraint firstItem="Lzg-WO-ca0" firstAttribute="trailing" secondItem="WZg-6Z-bpw" secondAttribute="trailing" id="AjS-fJ-c7I"/>
                             <constraint firstItem="sdG-Mu-87R" firstAttribute="leading" secondItem="Lzg-WO-ca0" secondAttribute="leading" constant="16" id="Yyf-ZK-r1x"/>
+                            <constraint firstItem="sdG-Mu-87R" firstAttribute="top" secondItem="WZg-6Z-bpw" secondAttribute="bottom" constant="8" id="gHY-sG-3pt"/>
+                            <constraint firstItem="WZg-6Z-bpw" firstAttribute="leading" secondItem="Lzg-WO-ca0" secondAttribute="leading" id="plq-X2-ycN"/>
                             <constraint firstItem="Lzg-WO-ca0" firstAttribute="bottom" secondItem="sdG-Mu-87R" secondAttribute="bottom" constant="16" id="rO7-2h-P6g"/>
                             <constraint firstItem="Lzg-WO-ca0" firstAttribute="trailing" secondItem="sdG-Mu-87R" secondAttribute="trailing" constant="16" id="vBt-ct-Izf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lzg-WO-ca0"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="STOCK" id="JNT-wX-Nel"/>
-                    <navigationItem key="navigationItem" id="ird-Zs-V4s">
-                        <barButtonItem key="rightBarButtonItem" title="stock" id="DIW-th-bZe"/>
-                    </navigationItem>
+                    <tabBarItem key="tabBarItem" title="TRANSACTION" image="icons8-transaction-list-26.png" id="JNT-wX-Nel"/>
+                    <connections>
+                        <outlet property="tableView" destination="WZg-6Z-bpw" id="d1g-YS-h3A"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUh-h9-UgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1708" y="504"/>
         </scene>
-        <!--Stock View Controller-->
+        <!--คลังสินค้า-->
         <scene sceneID="dJ7-g7-RQ4">
             <objects>
                 <viewController id="Zkj-RH-Ij6" customClass="StockViewController" sceneMemberID="viewController">
@@ -416,7 +496,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EmR-9h-iLh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EmR-9h-iLh">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="w5K-Df-B6I">
@@ -514,11 +594,18 @@
                         <constraints>
                             <constraint firstItem="84U-dD-1ee" firstAttribute="bottom" secondItem="EmR-9h-iLh" secondAttribute="bottom" id="0Hf-Vx-1UJ"/>
                             <constraint firstItem="84U-dD-1ee" firstAttribute="trailing" secondItem="EmR-9h-iLh" secondAttribute="trailing" id="30h-Mc-bTw"/>
-                            <constraint firstItem="EmR-9h-iLh" firstAttribute="top" secondItem="84U-dD-1ee" secondAttribute="top" id="g5N-3e-eeu"/>
+                            <constraint firstItem="EmR-9h-iLh" firstAttribute="top" secondItem="84U-dD-1ee" secondAttribute="top" id="5HC-cq-eLz"/>
                             <constraint firstItem="EmR-9h-iLh" firstAttribute="leading" secondItem="84U-dD-1ee" secondAttribute="leading" id="sdg-ON-60R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="84U-dD-1ee"/>
                     </view>
+                    <navigationItem key="navigationItem" title="คลังสินค้า" id="NNc-e9-sib">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Ls6-bL-hOF">
+                            <connections>
+                                <segue destination="aOK-dy-fsq" kind="push" id="z8j-TE-osR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="w5K-Df-B6I" id="crJ-7h-yzS"/>
                         <outlet property="tableView" destination="EmR-9h-iLh" id="7cp-tC-r9W"/>
@@ -731,7 +818,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AQo-Nc-8Zl"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="POS" id="DOd-R2-eyz"/>
+                    <tabBarItem key="tabBarItem" title="POS" image="icons8-pos-terminal-filled-26.png" id="DOd-R2-eyz"/>
                     <connections>
                         <outlet property="circleView" destination="Dny-G9-tyw" id="fJT-TS-T35"/>
                         <outlet property="codeTextField" destination="gNA-V7-PDh" id="qA7-AA-NNp"/>
@@ -769,12 +856,7 @@
             <objects>
                 <tabBarController id="UJT-ey-4AS" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="B&amp;T Incorporation" id="nvS-u0-gv3">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="QkR-He-wKC">
-                            <connections>
-                                <segue destination="aOK-dy-fsq" kind="show" id="FIv-dr-KOa"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="sre-ml-c2U">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="sre-ml-c2U">
                             <connections>
                                 <action selector="clear:" destination="eEY-Us-lEA" id="UwG-jn-31l"/>
                             </connections>
@@ -787,7 +869,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="3ZC-4y-QpE" kind="relationship" relationship="viewControllers" id="wdg-wg-GKy"/>
-                        <segue destination="Pfd-ZS-VgM" kind="relationship" relationship="viewControllers" id="uQB-dn-wqx"/>
+                        <segue destination="Pfd-ZS-VgM" kind="relationship" relationship="viewControllers" id="5Y6-jb-fAa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gt-gp-vMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -799,6 +881,8 @@
     <resources>
         <image name="IMG_3500.JPG" width="800" height="800"/>
         <image name="icons8-barcode-scanner-filled-64.png" width="64" height="64"/>
+        <image name="icons8-pos-terminal-filled-26.png" width="26" height="26"/>
         <image name="icons8-search-50.png" width="50" height="50"/>
+        <image name="icons8-transaction-list-26.png" width="26" height="26"/>
     </resources>
 </document>

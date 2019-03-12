@@ -33,7 +33,11 @@
     NSDictionary *parameters = @{};
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary * _Nonnull response) {
         NSArray *temp = response[@"data"];
-        for (NSDictionary *dict in temp) {
+        NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        NSArray *sortDescriptors = @[nameDescriptor];
+        NSArray *ordered = [temp sortedArrayUsingDescriptors:sortDescriptors];
+
+        for (NSDictionary *dict in ordered) {
             [self.array addObject:dict];
         }
         self.searchResults = [self.array mutableCopy];
@@ -62,21 +66,22 @@
                           sizeM:self.searchResults[indexPath.row][@"M"]
                           sizeL:self.searchResults[indexPath.row][@"L"]
                          sizeXL:self.searchResults[indexPath.row][@"XL"]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
-
-- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.view endEditing:YES];
 }
 
 #pragma mark - UISearchBarDelegate

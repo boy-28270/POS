@@ -120,16 +120,22 @@
                                  };
     
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
-        self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
-        [self.selectionView configurationWithCode:response[@"data"][@"code"]
-                                              name:response[@"data"][@"name"]
-                                          imageUrl:response[@"data"][@"image"]
-                                              item:response[@"data"][@"item"]
-                                              size:response[@"data"][@"size"]
-                                             color:response[@"data"][@"color"]
-                                             price:response[@"data"][@"price"]
-                                            index:0];
-        [self.selectionView show:YES];
+        if ([@"0" isEqualToString:[NSString stringWithFormat:@"%@", response[@"data"][@"item"]]]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"สินค้าหมด" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+            [alert show];
+        } else {
+            self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
+            [self.selectionView configurationWithCode:response[@"data"][@"code"]
+                                                 name:response[@"data"][@"name"]
+                                             imageUrl:response[@"data"][@"image"]
+                                                 item:response[@"data"][@"item"]
+                                                 size:response[@"data"][@"size"]
+                                                color:response[@"data"][@"color"]
+                                                price:response[@"data"][@"price"]
+                                                index:0];
+            [self.selectionView show:YES];
+        }
+
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
@@ -172,11 +178,12 @@
     [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
     [self.discountTextField setText:@""];
     [self.receiveAmountTextField setText:@""];
+    [self.codeTextField setText:@""];
 }
 
 #pragma mark - SelectItemViewDelegate
 
-- (void)selectionDidSelected:(HistoryModel *)model index:(NSNumber *)index{
+- (void)selectionDidSelected:(HistoryModel *)model index:(long)index{
     self.totalAmount += model.totalPrice;
     [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
     [self.historyList addObject:model];
@@ -191,16 +198,21 @@
                                  };
     
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
-        self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
-        [self.selectionView configurationWithCode:response[@"data"][@"code"]
-                                             name:response[@"data"][@"name"]
-                                         imageUrl:response[@"data"][@"image"]
-                                             item:response[@"data"][@"item"]
-                                             size:response[@"data"][@"size"]
-                                            color:response[@"data"][@"color"]
-                                            price:response[@"data"][@"price"]
-                                            index:0];
-        [self performSelector:@selector(showPopup) withObject:text afterDelay:0.1];
+        if ([@"0" isEqualToString:[NSString stringWithFormat:@"%@", response[@"data"][@"item"]]]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"สินค้าหมด" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+            [alert show];
+        } else {
+            self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
+            [self.selectionView configurationWithCode:response[@"data"][@"code"]
+                                                 name:response[@"data"][@"name"]
+                                             imageUrl:response[@"data"][@"image"]
+                                                 item:response[@"data"][@"item"]
+                                                 size:response[@"data"][@"size"]
+                                                color:response[@"data"][@"color"]
+                                                price:response[@"data"][@"price"]
+                                                index:0];
+            [self performSelector:@selector(showPopup) withObject:text afterDelay:0.1];
+        }
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
