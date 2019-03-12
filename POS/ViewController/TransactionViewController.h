@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithHistoryList:(NSMutableArray <HistoryModel *> *)historyList;
 
+@property(assign, nonatomic) BOOL selectable;
+
 @end
 
 NS_ASSUME_NONNULL_END

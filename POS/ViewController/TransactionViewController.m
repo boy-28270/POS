@@ -25,6 +25,7 @@
     self = [super init];
     if (self) {
         self.historyList = historyList;
+        self.selectable = YES;
     }
     return self;
 }
@@ -70,9 +71,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
-    [self.selectionView configurationWithModel:self.historyList[indexPath.row] index:indexPath.row];
-    [self.selectionView show:YES];
+    if (self.selectable) {
+        self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
+        [self.selectionView configurationWithModel:self.historyList[indexPath.row] index:indexPath.row];
+        [self.selectionView show:YES];
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -83,7 +86,7 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete && self.selectable) {
         // Delete the row from the data source
         [self.historyList removeObjectAtIndex:indexPath.row];
         [tableView beginUpdates];

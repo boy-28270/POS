@@ -146,6 +146,12 @@
 - (IBAction)summary:(id)sender {
     [self.view endEditing:YES];
     
+    if (self.historyList == nil || [self.historyList count] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"กรุณาเลือกสินค้า" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+        return;
+    }
+    
     if ([Utils isEmpty:self.receiveAmountTextField.text]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"กรุณากรอกข้อมูลให้ครบถ้วน" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];

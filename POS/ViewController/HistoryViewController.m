@@ -75,6 +75,7 @@
     }
     
     TransactionViewController *vc = [[TransactionViewController alloc] initWithHistoryList:historyList];
+    vc.selectable = NO;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -39,7 +39,8 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
     NSDate *dateServer  = [dateFormatter dateFromString:date];
     
-    [dateFormatter setDateFormat:@"dd MMM yyy"];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"th_TH"]];
+    [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
     [self.dateLabel setText:[dateFormatter stringFromDate:dateServer]];
 
     [dateFormatter setDateFormat:@"HH:mm"];
