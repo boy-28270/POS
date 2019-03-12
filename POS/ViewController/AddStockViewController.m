@@ -186,7 +186,7 @@
         [self.nameTextField setText:@""];
         [self.priceTextField setText:@""];
         [self.capitalPriceTextField setText:@""];
-        [self.itemImage setImage:nil];
+        [self.itemImage setImage:[UIImage imageNamed:@"placeholder.png"]];
         self.sizeSegmentedControl.selectedSegmentIndex = 0;
         self.colorSegmentedControl.selectedSegmentIndex = 0;
         [self.itemLabel setText:@"1"];

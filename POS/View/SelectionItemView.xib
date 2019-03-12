@@ -32,7 +32,7 @@
                             </items>
                             <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </toolbar>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_3495.JPG" translatesAutoresizingMaskIntoConstraints="NO" id="DGc-gx-Z3C">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="DGc-gx-Z3C">
                             <rect key="frame" x="16" y="16" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="HD7-hh-81j"/>
@@ -204,6 +204,6 @@
         </view>
     </objects>
     <resources>
-        <image name="IMG_3495.JPG" width="800" height="800"/>
+        <image name="placeholder.png" width="420" height="420"/>
     </resources>
 </document>

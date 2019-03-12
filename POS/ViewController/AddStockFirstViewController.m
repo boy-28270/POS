@@ -93,7 +93,7 @@
     if (buttonIndex == 0){
         [self.codeTextField setText:@""];
         [self.nameTextField setText:@""];
-        [self.itemImage setImage:nil];
+        [self.itemImage setImage:[UIImage imageNamed:@"placeholder.png"]];
         [self.sizeSegmentedControl setSelectedSegmentIndex:-1];
         [self.colorSegmentedControl setSelectedSegmentIndex:-1];
     }

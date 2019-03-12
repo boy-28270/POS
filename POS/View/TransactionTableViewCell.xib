@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ac8-2x-ybE">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ac8-2x-ybE">
                         <rect key="frame" x="16" y="11" width="98" height="98"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Ac8-2x-ybE" secondAttribute="height" multiplier="1:1" id="tlL-sG-vul"/>
@@ -117,4 +117,7 @@
             <point key="canvasLocation" x="-30" y="142"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="placeholder.png" width="420" height="420"/>
+    </resources>
 </document>
