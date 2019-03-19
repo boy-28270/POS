@@ -85,4 +85,42 @@
     }];
 }
 
++ (void)setPresentationStyleForSelfController:(UIViewController *)selfController presentingController:(UIViewController *)presentingController {
+    selfController.navigationController.definesPresentationContext = YES;
+    presentingController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    presentingController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [selfController presentViewController:presentingController animated:YES completion:nil];
+}
+
++ (void)uploadPhotoWithImage:(UIImage *)image fileName:(NSString *)fileName WithSuccessBlock:(void (^)(NSDictionary *response))success andFailureBlock:(void (^)(NSDictionary *error))failure {
+    NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"https://ntineloveu.com/api/pos/uploadImage?code=%@", fileName]];
+
+    UIImage *myImageObj = image;
+    NSData *imageData= UIImageJPEGRepresentation(myImageObj, 0.6);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [manager.requestSerializer setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    
+    [manager POST:URL.absoluteString parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:imageData
+                                    name:@"imgUploader"
+                                fileName:fileName mimeType:@"image/jpeg"];
+        
+        // etc.
+    } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"success %@", responseObject);
+        NSDictionary *dict = (NSDictionary *)responseObject;
+        if (1 == [dict[@"status"] integerValue]) {
+            success(dict);
+        } else {
+            failure(dict);
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"failure %@", error);
+    }];
+}
+
 @end

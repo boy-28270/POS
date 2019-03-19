@@ -23,9 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.transactionList = [NSMutableArray array];
     self.tableView.tableFooterView = [UIView new];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.transactionList = [NSMutableArray array];
+
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
     NSDictionary *parameters = @{};
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary * _Nonnull response) {

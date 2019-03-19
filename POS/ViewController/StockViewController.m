@@ -8,12 +8,18 @@
 
 #import "StockViewController.h"
 #import "StockTableViewCell.h"
+#import "StockImageViewController.h"
 #import "Utils.h"
 
 @interface StockViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UILabel *totalSizeSLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalSizeMLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalSizeLLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalSizeXLLabel;
+
 
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *array;
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *searchResults;
@@ -41,6 +47,12 @@
             [self.array addObject:dict];
         }
         self.searchResults = [self.array mutableCopy];
+        
+        self.totalSizeSLabel.text = [NSString stringWithFormat:@"S = %@", response[@"totalSizeS"]];
+        self.totalSizeMLabel.text = [NSString stringWithFormat:@"M = %@", response[@"totalSizeM"]];
+        self.totalSizeLLabel.text = [NSString stringWithFormat:@"L = %@", response[@"totalSizeL"]];
+        self.totalSizeXLLabel.text = [NSString stringWithFormat:@"XL = %@", response[@"totalSizeXL"]];
+        
         [self.tableView reloadData];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
@@ -82,6 +94,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.view endEditing:YES];
+    StockImageViewController *popup = [[StockImageViewController alloc] initWithImageUrl:self.searchResults[indexPath.row][@"image"]];
+    [Utils setPresentationStyleForSelfController:self presentingController:popup];
 }
 
 #pragma mark - UISearchBarDelegate

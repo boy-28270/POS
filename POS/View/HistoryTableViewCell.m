@@ -39,12 +39,13 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
     NSDate *dateServer  = [dateFormatter dateFromString:date];
     
-    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"th_TH"]];
-    [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
-    [self.dateLabel setText:[dateFormatter stringFromDate:dateServer]];
-
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"th"]];
+    
     [dateFormatter setDateFormat:@"HH:mm"];
     [self.timeLabel setText:[dateFormatter stringFromDate:dateServer]];
+    
+    [dateFormatter setDateFormat:@"EEEE, MMM d, yyyy"];
+    [self.dateLabel setText:[dateFormatter stringFromDate:dateServer]];
     
     [self.totalItemLabel setText:[NSString stringWithFormat:@"%@", totalItem]];
     [self.totalPriceLabel setText:[Utils formatNumberWithText:totalPrice]];

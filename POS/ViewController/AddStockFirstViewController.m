@@ -10,7 +10,7 @@
 #import "ScanBarcodeViewController.h"
 #import "Utils.h"
 
-@interface AddStockFirstViewController () <ScanBarcodeViewControllerDelegate, UIAlertViewDelegate>
+@interface AddStockFirstViewController () <ScanBarcodeViewControllerDelegate, UIAlertViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemImage;
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
@@ -20,13 +20,19 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sizeSegmentedControl;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *colorSegmentedControl;
 
+@property (strong, nonatomic) UIImage *image;
+@property (assign, nonatomic) BOOL chooseImage;
+
 @end
 
 @implementation AddStockFirstViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.chooseImage = NO;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectPhoto:)];
+    [self.itemImage addGestureRecognizer:tap];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -34,6 +40,25 @@
     [self.nameTextField resignFirstResponder];
 }
 
+- (void)selectPhoto:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.image = chosenImage;
+    self.itemImage.image = chosenImage;
+    self.chooseImage = YES;
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
 
 #pragma mark - ScanBarcodeViewControllerDelegate
 
@@ -53,6 +78,11 @@
     NSString *name = self.nameTextField.text;
     if ([Utils isEmpty:code] || [Utils isEmpty:name] || self.sizeSegmentedControl.selectedSegmentIndex == -1 || self.colorSegmentedControl.selectedSegmentIndex == -1) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"กรุณากรอกข้อมูลให้ครบถ้วน" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+        return;
+    }
+    if (!self.chooseImage) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"กรุณาเลือกรูปภาพ" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
         return;
     }
@@ -77,10 +107,15 @@
         [alert show];
         return;
     }
-
-    [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"สำเร็จ" message:@"เพิ่มข้อมูลเรียบร้อย" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
-        [alert show];
+    
+    [Utils uploadPhotoWithImage:self.itemImage.image fileName:[NSString stringWithFormat:@"%@.JPG", code] WithSuccessBlock:^(NSDictionary * _Nonnull response) {
+        [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"สำเร็จ" message:@"เพิ่มข้อมูลเรียบร้อย" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+            [alert show];
+        } andFailureBlock:^(NSDictionary * _Nonnull error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+            [alert show];
+        }];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
@@ -91,6 +126,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0){
+        self.chooseImage = NO;
         [self.codeTextField setText:@""];
         [self.nameTextField setText:@""];
         [self.itemImage setImage:[UIImage imageNamed:@"placeholder.png"]];
