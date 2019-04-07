@@ -24,6 +24,8 @@
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *array;
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *searchResults;
 
+@property (strong, nonatomic) MBProgressHUD *hud;
+
 @end
 
 @implementation StockViewController
@@ -34,6 +36,8 @@
     self.tableView.tableFooterView = [UIView new];
     self.array = [NSMutableArray array];
     self.searchResults = [NSMutableArray array];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryListStock";
     NSDictionary *parameters = @{};
@@ -54,6 +58,8 @@
         self.totalSizeXLLabel.text = [NSString stringWithFormat:@"XL = %@", response[@"totalSizeXL"]];
         
         [self.tableView reloadData];
+        
+        [self.hud hideAnimated:YES];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];

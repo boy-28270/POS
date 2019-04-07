@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *transactionList;
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @end
 
@@ -22,12 +23,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     self.transactionList = [NSMutableArray array];
 
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
@@ -40,7 +43,10 @@
         }
         
         [self.tableView reloadData];
+        
+        [self.hud hideAnimated:YES];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
+        [self.hud hideAnimated:YES];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
     }];
@@ -62,25 +68,28 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSMutableArray <HistoryModel *> *historyList = [NSMutableArray array];
-    
-    NSArray *array = self.transactionList[indexPath.row][@"items"];
-    for (NSDictionary *dict in array) {
-        HistoryModel *model = [[HistoryModel alloc] init];
-        model.code = dict[@"code"];
-        model.name = dict[@"name"];
-        model.size = dict[@"size"];
-        model.color = dict[@"color"];
-        model.imageUrl = dict[@"image"];
-        model.item = [dict[@"item"] doubleValue];
-        model.price = [dict[@"price"] doubleValue];
-        model.totalPrice = [dict[@"totalPrice"] doubleValue];
-        [historyList addObject:model];
+    if ([self.transactionList count] != 0) {
+        NSMutableArray <HistoryModel *> *historyList = [NSMutableArray array];
+        
+        NSArray *array = self.transactionList[indexPath.row][@"items"];
+        for (NSDictionary *dict in array) {
+            HistoryModel *model = [[HistoryModel alloc] init];
+            model.code = dict[@"code"];
+            model.name = dict[@"name"];
+            model.size = dict[@"size"];
+            model.color = dict[@"color"];
+            model.imageUrl = dict[@"image"];
+            model.item = [dict[@"item"] doubleValue];
+            model.price = [dict[@"price"] doubleValue];
+            model.totalPrice = [dict[@"totalPrice"] doubleValue];
+            [historyList addObject:model];
+        }
+        
+        TransactionViewController *vc = [[TransactionViewController alloc] initWithHistoryList:historyList];
+        vc.selectable = NO;
+        [self.navigationController pushViewController:vc animated:YES];
+
     }
-    
-    TransactionViewController *vc = [[TransactionViewController alloc] initWithHistoryList:historyList];
-    vc.selectable = NO;
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate

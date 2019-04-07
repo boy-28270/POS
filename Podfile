@@ -9,7 +9,9 @@ target 'POS' do
   pod 'ZXingObjC', '~> 3.6.4'
   pod 'AFNetworking', '~> 3.0'
   pod 'SDWebImage', '~> 4.0'
-
+  pod 'FSCalendar'
+  pod 'MBProgressHUD', '~> 1.1.0'
+  
   target 'POSTests' do
     inherit! :search_paths
     # Pods for testing
