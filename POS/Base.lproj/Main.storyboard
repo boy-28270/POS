@@ -51,7 +51,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kuC-ty-RXL">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kuC-ty-RXL">
                                 <rect key="frame" x="135" y="274" width="224" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -63,7 +63,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W2H-ZK-ABV">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W2H-ZK-ABV">
                                 <rect key="frame" x="135" y="320" width="224" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -391,7 +391,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WZg-6Z-bpw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="577"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="569"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" rowHeight="120" id="5es-7O-kcr" customClass="HistoryTableViewCell">
@@ -471,8 +471,8 @@
                         <constraints>
                             <constraint firstItem="WZg-6Z-bpw" firstAttribute="top" secondItem="Lzg-WO-ca0" secondAttribute="top" id="5ck-QZ-mGJ"/>
                             <constraint firstItem="Lzg-WO-ca0" firstAttribute="trailing" secondItem="WZg-6Z-bpw" secondAttribute="trailing" id="AjS-fJ-c7I"/>
+                            <constraint firstItem="sdG-Mu-87R" firstAttribute="top" secondItem="WZg-6Z-bpw" secondAttribute="bottom" constant="16" id="LfC-iL-Fq9"/>
                             <constraint firstItem="sdG-Mu-87R" firstAttribute="leading" secondItem="Lzg-WO-ca0" secondAttribute="leading" constant="16" id="Yyf-ZK-r1x"/>
-                            <constraint firstItem="sdG-Mu-87R" firstAttribute="top" secondItem="WZg-6Z-bpw" secondAttribute="bottom" constant="8" id="gHY-sG-3pt"/>
                             <constraint firstItem="WZg-6Z-bpw" firstAttribute="leading" secondItem="Lzg-WO-ca0" secondAttribute="leading" id="plq-X2-ycN"/>
                             <constraint firstItem="Lzg-WO-ca0" firstAttribute="bottom" secondItem="sdG-Mu-87R" secondAttribute="bottom" constant="16" id="rO7-2h-P6g"/>
                             <constraint firstItem="Lzg-WO-ca0" firstAttribute="trailing" secondItem="sdG-Mu-87R" secondAttribute="trailing" constant="16" id="vBt-ct-Izf"/>

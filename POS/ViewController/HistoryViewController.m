@@ -31,11 +31,10 @@
     
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
-    self.transactionList = [NSMutableArray array];
-
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
     NSDictionary *parameters = @{};
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary * _Nonnull response) {
+        self.transactionList = [NSMutableArray array];
         NSArray *array = response[@"data"];
         
         for (NSDictionary *dict in array) {

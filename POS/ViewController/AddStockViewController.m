@@ -107,6 +107,13 @@
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
         [self.codeTextField setText:response[@"data"][@"code"]];
         [self.nameTextField setText:response[@"data"][@"name"]];
+        NSString *price = [NSString stringWithFormat:@"%@", response[@"data"][@"price"]];
+        NSString *capitalPrice = [NSString stringWithFormat:@"%@", response[@"data"][@"capitalPrice"]];
+        NSString *item = [NSString stringWithFormat:@"%@", response[@"data"][@"item"]];
+        
+
+        [self.priceTextField setText:[NSString stringWithFormat:@"%.2f", [price doubleValue]]];
+        [self.capitalPriceTextField setText:[NSString stringWithFormat:@"%.2f", [capitalPrice doubleValue] / [item doubleValue]]];
         NSString *size = response[@"data"][@"size"];
         if ([size isEqualToString:@"S"]) {
             self.sizeSegmentedControl.selectedSegmentIndex = 0;
