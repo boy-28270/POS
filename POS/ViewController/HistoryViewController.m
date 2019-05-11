@@ -16,6 +16,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *transactionList;
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (weak, nonatomic) IBOutlet UILabel *profitLabel;
+
+@property (assign, nonatomic) double profit;
+@property (assign, nonatomic) double summary;
 
 @end
 
@@ -30,6 +34,8 @@
     [super viewWillAppear:animated];
     
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.profit = 0;
+    self.summary = 0;
 
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
     NSDictionary *parameters = @{};
@@ -39,10 +45,12 @@
         
         for (NSDictionary *dict in array) {
             [self.transactionList addObject:dict];
+            self.profit += [dict[@"profit"] doubleValue];
+            self.summary += [dict[@"summary"] doubleValue];
         }
         
         [self.tableView reloadData];
-        
+        [self.profitLabel setText:[NSString stringWithFormat:@"ยอดขาย = %.0f  ,  กำไร = %.0f", self.summary, self.profit]];
         [self.hud hideAnimated:YES];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         [self.hud hideAnimated:YES];
