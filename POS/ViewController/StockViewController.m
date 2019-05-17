@@ -34,6 +34,11 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [UIView new];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     self.array = [NSMutableArray array];
     self.searchResults = [NSMutableArray array];
     
@@ -46,7 +51,7 @@
         NSSortDescriptor *nameDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
         NSArray *sortDescriptors = @[nameDescriptor];
         NSArray *ordered = [temp sortedArrayUsingDescriptors:sortDescriptors];
-
+        
         for (NSDictionary *dict in ordered) {
             [self.array addObject:dict];
         }
@@ -64,10 +69,7 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
     }];
-}
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 #pragma mark - UITableViewDataSource

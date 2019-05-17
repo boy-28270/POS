@@ -20,6 +20,7 @@
 
 @property (assign, nonatomic) double profit;
 @property (assign, nonatomic) double summary;
+@property (assign, nonatomic) double total;
 
 @end
 
@@ -36,6 +37,7 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.profit = 0;
     self.summary = 0;
+    self.total = 0;
 
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
     NSDictionary *parameters = @{};
@@ -47,10 +49,11 @@
             [self.transactionList addObject:dict];
             self.profit += [dict[@"profit"] doubleValue];
             self.summary += [dict[@"summary"] doubleValue];
+            self.total += [dict[@"totalItem"] doubleValue];
         }
         
         [self.tableView reloadData];
-        [self.profitLabel setText:[NSString stringWithFormat:@"ยอดขาย = %.0f  ,  กำไร = %.0f", self.summary, self.profit]];
+        [self.profitLabel setText:[NSString stringWithFormat:@"จำนวน = %.0f  ,  ยอดขาย = %.0f  ,  กำไร = %.0f", self.total, self.summary, self.profit]];
         [self.hud hideAnimated:YES];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         [self.hud hideAnimated:YES];
