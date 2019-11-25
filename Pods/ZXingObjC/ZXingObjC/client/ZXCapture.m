@@ -602,11 +602,4 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
   }
 }
 
-- (void)setOrientation:(AVCaptureVideoOrientation)orientation {
-    AVCaptureConnection *connection = _layer.connection;
-    if ([connection isVideoOrientationSupported]) {
-        [connection setVideoOrientation:orientation];
-    }
-}
-
 @end

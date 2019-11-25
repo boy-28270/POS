@@ -114,7 +114,9 @@
 //    CGAffineTransform transform = CGAffineTransformMakeRotation((CGFloat) (captureRotation / 180 * M_PI));
 //    [self.capture setTransform:transform];
     [self.capture setRotation:scanRectRotation];
-    [self.capture setOrientation:(AVCaptureVideoOrientation)orientation];
+    
+//    [self.capture set]
+//    [self.capture setOrientation:(AVCaptureVideoOrientation)orientation];
     
     [self applyRectOfInterest:orientation];
 }

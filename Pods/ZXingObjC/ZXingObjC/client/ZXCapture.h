@@ -61,7 +61,6 @@
 - (void)order_skip;
 - (void)start;
 - (void)stop;
-- (void)setOrientation:(AVCaptureVideoOrientation)orientation;
 
 /**
  * This enables `ZXCapture` to try additional heuristics to decode
