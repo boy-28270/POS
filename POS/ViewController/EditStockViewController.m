@@ -174,6 +174,9 @@
 
 - (IBAction)save:(id)sender {
     NSString *code = self.codeTextField.text;
+    NSString *name = self.nameTextField.text;
+    NSString *color = [self.colorSegmentedControl titleForSegmentAtIndex:self.colorSegmentedControl.selectedSegmentIndex];
+    NSString *size = [self.sizeSegmentedControl titleForSegmentAtIndex:self.sizeSegmentedControl.selectedSegmentIndex];
     NSString *price = self.priceTextField.text;
     NSString *item = [NSString stringWithFormat:@"%.0f", [self.itemStepper value]];
     double cal = [self.capitalPriceTextField.text doubleValue] * [self.itemStepper value];
@@ -185,9 +188,12 @@
         return;
     }
     
-    NSString *URLString = @"https://ntineloveu.com/api/pos/updateStock";
+    NSString *URLString = @"https://ntineloveu.com/api/pos/editStock";
     NSDictionary *parameters = @{
                                  @"code": code,
+                                 @"name": name,
+                                 @"color": color,
+                                 @"size": size,
                                  @"item": item,
                                  @"price": price,
                                  @"capitalPrice": capitalPrice
