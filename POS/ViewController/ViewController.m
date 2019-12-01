@@ -35,8 +35,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
-    self.tabBarController.navigationItem.rightBarButtonItem = rightButton;
     
     self.circleView.layer.cornerRadius = self.circleView.frame.size.height/2;
     self.historyList = [NSMutableArray array];
@@ -93,16 +91,6 @@
 }
 
 #pragma mark - Outlets
-
-- (void)refresh:(id)sender {
-    [self.view endEditing:YES];
-
-    self.historyList = [NSMutableArray array];
-    self.totalAmount = 0;
-    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
-    [self.discountTextField setText:@""];
-    [self.receiveAmountTextField setText:@""];
-}
 
 - (IBAction)clickSearch:(id)sender {
     [self.view endEditing:YES];
