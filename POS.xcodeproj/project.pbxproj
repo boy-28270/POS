@@ -29,6 +29,7 @@
 		D2B0EA812222A3FC005A6F12 /* IMG_3500.JPG in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA7E2222A3FC005A6F12 /* IMG_3500.JPG */; };
 		D2B0EA972222E3C6005A6F12 /* SummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA962222E3C6005A6F12 /* SummaryView.m */; };
 		D2B0EA992222E3D5005A6F12 /* SummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA982222E3D5005A6F12 /* SummaryView.xib */; };
+		D2D786242393FB58009B945F /* EditStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D786232393FB58009B945F /* EditStockViewController.m */; };
 		D2D8718E2238212D00C7890C /* icons8-transaction-list-26.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8718C2238212D00C7890C /* icons8-transaction-list-26.png */; };
 		D2D87194223821E800C7890C /* icons8-pos-terminal-filled-26.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D87193223821E700C7890C /* icons8-pos-terminal-filled-26.png */; };
 		D2D871972238249E00C7890C /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D871962238249E00C7890C /* HistoryViewController.m */; };
@@ -108,6 +109,8 @@
 		D2B0EA952222E3C6005A6F12 /* SummaryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SummaryView.h; sourceTree = "<group>"; };
 		D2B0EA962222E3C6005A6F12 /* SummaryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SummaryView.m; sourceTree = "<group>"; };
 		D2B0EA982222E3D5005A6F12 /* SummaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryView.xib; sourceTree = "<group>"; };
+		D2D786222393FB58009B945F /* EditStockViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditStockViewController.h; sourceTree = "<group>"; };
+		D2D786232393FB58009B945F /* EditStockViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditStockViewController.m; sourceTree = "<group>"; };
 		D2D8718C2238212D00C7890C /* icons8-transaction-list-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-transaction-list-26.png"; sourceTree = "<group>"; };
 		D2D87193223821E700C7890C /* icons8-pos-terminal-filled-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-pos-terminal-filled-26.png"; sourceTree = "<group>"; };
 		D2D871952238249E00C7890C /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				D2F0A3E32232BE2400197472 /* AddStockFirstViewController.m */,
 				D2F0A3F322348E8600197472 /* StockViewController.h */,
 				D2F0A3F422348E8600197472 /* StockViewController.m */,
+				D2D786222393FB58009B945F /* EditStockViewController.h */,
+				D2D786232393FB58009B945F /* EditStockViewController.m */,
 				D2D8719B223BEA7500C7890C /* StockImageViewController.h */,
 				D2D8719C223BEA7500C7890C /* StockImageViewController.m */,
 				D2D8719D223BEA7500C7890C /* StockImageViewController.xib */,
@@ -577,6 +582,7 @@
 				D2B0EA972222E3C6005A6F12 /* SummaryView.m in Sources */,
 				D2B0EA312221B04B005A6F12 /* AppDelegate.m in Sources */,
 				D2F0A4022235428500197472 /* HistoryModel.m in Sources */,
+				D2D786242393FB58009B945F /* EditStockViewController.m in Sources */,
 				D2B0EA7322227A8B005A6F12 /* SelectionItemView.m in Sources */,
 				D2F0A4092235585900197472 /* TransactionViewController.m in Sources */,
 				D2F0A3F822348EA700197472 /* StockTableViewCell.m in Sources */,
