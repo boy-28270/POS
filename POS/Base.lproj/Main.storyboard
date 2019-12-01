@@ -365,7 +365,7 @@
             </objects>
             <point key="canvasLocation" x="4841" y="510"/>
         </scene>
-        <!--รายการขายทั้งหมด-->
+        <!--รายการขาย-->
         <scene sceneID="F0S-9u-M39">
             <objects>
                 <viewController id="Pfd-ZS-VgM" customClass="HistoryViewController" sceneMemberID="viewController">
@@ -487,7 +487,7 @@
                         <viewLayoutGuide key="safeArea" id="Lzg-WO-ca0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="TRANSACTION" image="icons8-transaction-list-26.png" id="JNT-wX-Nel"/>
-                    <navigationItem key="navigationItem" title="รายการขายทั้งหมด" id="iHL-9R-wnU"/>
+                    <navigationItem key="navigationItem" title="รายการขาย" id="iHL-9R-wnU"/>
                     <connections>
                         <outlet property="profitLabel" destination="hai-s2-gdb" id="0ru-Hz-Ova"/>
                         <outlet property="tableView" destination="WZg-6Z-bpw" id="d1g-YS-h3A"/>
