@@ -63,6 +63,8 @@
         self.totalSizeXLLabel.text = [NSString stringWithFormat:@"XL = %@", response[@"totalSizeXL"]];
         
         [self.tableView reloadData];
+        [self.tableView layoutIfNeeded];
+        NSLog(@"%f", self.tableView.contentSize.height);
         
         [self.hud hideAnimated:YES];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
