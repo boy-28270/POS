@@ -36,11 +36,11 @@
                    totalPrice:(NSString *)totalPrice {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"us"]];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZ"];
     NSDate *dateServer  = [dateFormatter dateFromString:date];
-    
+        
     [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"th"]];
-    
     [dateFormatter setDateFormat:@"HH:mm"];
     [self.timeLabel setText:[dateFormatter stringFromDate:dateServer]];
     
