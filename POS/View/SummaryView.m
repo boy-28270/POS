@@ -47,11 +47,11 @@
         self.discountAmount = [NSString stringWithFormat:@"%.2f", discountAmount];
         self.changeAmount = [NSString stringWithFormat:@"%.2f", amount-totalAmount+discountAmount];
 
-        [self.summaryAmountLabel setText:[Utils formatNumberWithNumber:totalAmount-discountAmount]];
-        [self.totalAmountLabel setText:[Utils formatNumberWithNumber:totalAmount]];
-        [self.receiveAmountLabel setText:[Utils formatNumberWithNumber:amount]];
-        [self.discountAmountLabel setText:[Utils formatNumberWithNumber:discountAmount]];
-        [self.changeAmountLabel setText:[Utils formatNumberWithNumber:amount-totalAmount+discountAmount]];
+        [self.summaryAmountLabel setText:[Utils formatNumberWithNumber:totalAmount-discountAmount showCurrency:YES]];
+        [self.totalAmountLabel setText:[Utils formatNumberWithNumber:totalAmount showCurrency:YES]];
+        [self.receiveAmountLabel setText:[Utils formatNumberWithNumber:amount showCurrency:YES]];
+        [self.discountAmountLabel setText:[Utils formatNumberWithNumber:discountAmount showCurrency:YES]];
+        [self.changeAmountLabel setText:[Utils formatNumberWithNumber:amount-totalAmount+discountAmount showCurrency:YES]];
     }
     return self;
 }

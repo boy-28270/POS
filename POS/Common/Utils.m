@@ -19,10 +19,12 @@
 }
 
 
-+ (NSString *)formatNumberWithText:(NSString *)number {
++ (NSString *)formatNumberWithText:(NSString *)number showCurrency:(BOOL)showCurrency {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [formatter setCurrencySymbol:@"฿"];
+    if (showCurrency) {
+        [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [formatter setCurrencySymbol:@"฿"];
+    }
     NSString *groupingSeparator = [[NSLocale localeWithLocaleIdentifier:@"th_TH"] objectForKey:NSLocaleGroupingSeparator];
     [formatter setGroupingSeparator:groupingSeparator];
     [formatter setGroupingSize:3];
@@ -31,10 +33,12 @@
     return [formatter stringFromNumber:[NSNumber numberWithDouble:[number doubleValue]]];
 }
 
-+ (NSString *)formatNumberWithNumber:(double)number {
++ (NSString *)formatNumberWithNumber:(double)number showCurrency:(BOOL)showCurrency {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [formatter setCurrencySymbol:@"฿"];
+    if (showCurrency) {
+        [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [formatter setCurrencySymbol:@"฿"];
+    }
     NSString *groupingSeparator = [[NSLocale localeWithLocaleIdentifier:@"th_TH"] objectForKey:NSLocaleGroupingSeparator];
     [formatter setGroupingSeparator:groupingSeparator];
     [formatter setGroupingSize:3];

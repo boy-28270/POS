@@ -53,7 +53,7 @@
         }
         
         [self.tableView reloadData];
-        [self.profitLabel setText:[NSString stringWithFormat:@"จำนวน = %.0f  ,  ยอดขาย = %.0f  ,  กำไร = %.0f", self.total, self.summary, self.profit]];
+        [self.profitLabel setText:[NSString stringWithFormat:@"จำนวน %.0f ตัว  |  ยอดขาย %@  |  กำไร %@", self.total, [Utils formatNumberWithNumber:self.summary showCurrency:NO], [Utils formatNumberWithNumber:self.profit showCurrency:NO]]];
         [self.hud hideAnimated:YES];
     } andFailureBlock:^(NSDictionary * _Nonnull error) {
         [self.hud hideAnimated:YES];

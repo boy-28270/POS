@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Utils : NSObject
 
 + (BOOL)isEmpty:(NSString *)str;
-+ (NSString *)formatNumberWithText:(NSString *)number;
-+ (NSString *)formatNumberWithNumber:(double)number;
++ (NSString *)formatNumberWithText:(NSString *)number showCurrency:(BOOL)showCurrency;
++ (NSString *)formatNumberWithNumber:(double)number showCurrency:(BOOL)showCurrency;
 + (void)callServiceWithURL:(NSString *)url request:(NSDictionary *)request WithSuccessBlock:(void (^)(NSDictionary *response))success andFailureBlock:(void (^)(NSDictionary *error))failure;
 + (void)setPresentationStyleForSelfController:(UIViewController *)selfController presentingController:(UIViewController *)presentingController;
 + (void)uploadPhotoWithImage:(UIImage *)image fileName:(NSString *)fileName WithSuccessBlock:(void (^)(NSDictionary *response))success andFailureBlock:(void (^)(NSDictionary *error))failure;

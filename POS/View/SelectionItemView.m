@@ -41,7 +41,7 @@
         self.amountPerItem = 250;
         self.totalAmount = 250;
         self.index = 0;
-        [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.amountPerItem]];
+        [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.amountPerItem showCurrency:YES]];
         self.model = [[HistoryModel alloc] init];
     }
     return self;
@@ -109,7 +109,7 @@
     [self.itemStepper setMaximumValue:[item doubleValue]];
     self.amountPerItem = [price doubleValue];
     self.totalAmount = [price doubleValue];
-    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount showCurrency:YES]];
     
     self.model.code = code;
     self.model.name = name;
@@ -154,7 +154,7 @@
     [self.itemLabel setText:text];
     self.amountPerItem = [model price];
     self.totalAmount = [model totalPrice];
-    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount showCurrency:YES]];
 }
 
 #pragma mark - Outlets
@@ -168,7 +168,7 @@
     self.totalAmount = self.amountPerItem * item;
     NSString *text = [NSString stringWithFormat:@"%.0f", item];
     [self.itemLabel setText:text];
-    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount showCurrency:YES]];
 }
 
 - (IBAction)addItem:(id)sender {

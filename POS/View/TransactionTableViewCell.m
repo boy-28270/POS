@@ -45,8 +45,8 @@
     [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:image] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
     [self.sizeLabel setText:size];
     [self.itemLabel setText:[NSString stringWithFormat:@"%.0f", item]];
-    [self.priceLabel setText:[Utils formatNumberWithNumber:price]];
-    [self.totalPriceLabel setText:[Utils formatNumberWithNumber:totalPrice]];
+    [self.priceLabel setText:[Utils formatNumberWithNumber:price showCurrency:YES]];
+    [self.totalPriceLabel setText:[Utils formatNumberWithNumber:totalPrice showCurrency:YES]];
 }
 
 @end

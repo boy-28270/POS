@@ -39,7 +39,7 @@
     self.circleView.layer.cornerRadius = self.circleView.frame.size.height/2;
     self.historyList = [NSMutableArray array];
     self.totalAmount = 0.0;
-    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount showCurrency:YES]];
     
     [self.discountTextField addTarget:self
                   action:@selector(textFieldDidChange)
@@ -52,7 +52,7 @@
         for (HistoryModel *model in self.historyList) {
             self.totalAmount += model.totalPrice;
         }
-        [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+        [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount showCurrency:YES]];
     }
 }
 
@@ -169,7 +169,7 @@
 - (void)summaryComplete {
     self.historyList = [NSMutableArray array];
     self.totalAmount = 0;
-    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount showCurrency:YES]];
     [self.discountTextField setText:@""];
     [self.receiveAmountTextField setText:@""];
     [self.codeTextField setText:@""];
@@ -179,7 +179,7 @@
 
 - (void)selectionDidSelected:(HistoryModel *)model index:(long)index{
     self.totalAmount += model.totalPrice;
-    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount]];
+    [self.totalAmountLabel setText:[Utils formatNumberWithNumber:self.totalAmount showCurrency:YES]];
     [self.historyList addObject:model];
 }
 

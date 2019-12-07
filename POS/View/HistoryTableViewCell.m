@@ -48,7 +48,7 @@
     [self.dateLabel setText:[dateFormatter stringFromDate:dateServer]];
     
     [self.totalItemLabel setText:[NSString stringWithFormat:@"%@", totalItem]];
-    [self.totalPriceLabel setText:[Utils formatNumberWithText:totalPrice]];
+    [self.totalPriceLabel setText:[Utils formatNumberWithText:totalPrice showCurrency:YES]];
 }
 
 @end
