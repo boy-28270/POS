@@ -118,7 +118,7 @@
                                     <segment title="เทา"/>
                                 </segments>
                             </segmentedControl>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vUV-Xl-g0O">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="vUV-Xl-g0O">
                                 <rect key="frame" x="265" y="588" width="94" height="32"/>
                                 <connections>
                                     <action selector="changeItem:" destination="aOK-dy-fsq" eventType="valueChanged" id="bZe-9H-LOn"/>
@@ -226,7 +226,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dC-JG-1PT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รหัสสินค้า" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slX-kD-JaZ">
                                         <rect key="frame" x="16" y="280.66666666666669" width="69.666666666666671" height="21"/>
@@ -500,13 +500,13 @@
         <!--คลังสินค้า-->
         <scene sceneID="dJ7-g7-RQ4">
             <objects>
-                <viewController id="Zkj-RH-Ij6" customClass="StockViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Zkj-RH-Ij6" customClass="StockViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v5e-yf-C7r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EmR-9h-iLh">
-                                <rect key="frame" x="0.0" y="88" width="375" height="601"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="650"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="w5K-Df-B6I">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -599,7 +599,7 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pi4-Gd-pMY">
-                                <rect key="frame" x="0.0" y="689" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="738" width="375" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S = 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vtu-ka-HqC">
                                         <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="40"/>
@@ -646,6 +646,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="84U-dD-1ee"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="คลังสินค้า" id="NNc-e9-sib">
                         <rightBarButtonItems>
                             <barButtonItem style="plain" systemItem="add" id="Ls6-bL-hOF">
@@ -660,6 +661,7 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="w5K-Df-B6I" id="crJ-7h-yzS"/>
                         <outlet property="tableView" destination="EmR-9h-iLh" id="7cp-tC-r9W"/>
@@ -903,6 +905,11 @@
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="uYd-mg-ISF">
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="view.backgroundColor">
+                            <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="3ZC-4y-QpE" kind="relationship" relationship="rootViewController" id="EqH-e7-4Q5"/>
                     </connections>
@@ -1040,7 +1047,7 @@
                                     <segment title="เทา"/>
                                 </segments>
                             </segmentedControl>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vVd-b7-T7h">
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="1000000" translatesAutoresizingMaskIntoConstraints="NO" id="vVd-b7-T7h">
                                 <rect key="frame" x="265" y="500" width="94" height="32"/>
                                 <connections>
                                     <action selector="changeItem:" destination="9at-0i-Y0f" eventType="valueChanged" id="uSL-Os-1W7"/>
@@ -1146,11 +1153,34 @@
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aH5-jE-LKd">
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="view.backgroundColor">
+                            <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="Pfd-ZS-VgM" kind="relationship" relationship="rootViewController" id="p1d-tR-SRf"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7m7-Bd-hNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1681" y="510"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="7uc-eP-p5X">
+            <objects>
+                <navigationController id="WDX-kZ-2Tp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="POW-yw-NjA"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oJZ-Pq-siM">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FE4-Gi-ZsG">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="24O-Nt-z0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1681" y="510"/>
         </scene>
