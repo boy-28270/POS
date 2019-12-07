@@ -21,8 +21,8 @@
 
 + (NSString *)formatNumberWithText:(NSString *)number {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyISOCodeStyle];
-    [formatter setCurrencyCode:@"฿"];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [formatter setCurrencySymbol:@"฿"];
     NSString *groupingSeparator = [[NSLocale localeWithLocaleIdentifier:@"th_TH"] objectForKey:NSLocaleGroupingSeparator];
     [formatter setGroupingSeparator:groupingSeparator];
     [formatter setGroupingSize:3];
@@ -33,8 +33,8 @@
 
 + (NSString *)formatNumberWithNumber:(double)number {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterCurrencyISOCodeStyle];
-    [formatter setCurrencyCode:@"฿"];
+    [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [formatter setCurrencySymbol:@"฿"];
     NSString *groupingSeparator = [[NSLocale localeWithLocaleIdentifier:@"th_TH"] objectForKey:NSLocaleGroupingSeparator];
     [formatter setGroupingSeparator:groupingSeparator];
     [formatter setGroupingSize:3];
