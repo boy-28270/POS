@@ -8,6 +8,7 @@
 
 #import "SelectionItemView.h"
 #import "Utils.h"
+#import <UIImageView+WebCache.h>
 
 @interface SelectionItemView()
 
@@ -82,8 +83,8 @@
     }
     [self.nameLabel setText:name];
     NSString *image = [NSString stringWithFormat:@"https://ntineloveu.com%@", imageUrl];
-    NSData *imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString:image]];
-    self.profileImageView.image = [UIImage imageWithData:imageData];
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:image] placeholderImage:[UIImage imageNamed:@"placeholder.png"]];
+
     if ([size isEqualToString:@"S"]) {
         self.sizeSegmentedControl.selectedSegmentIndex = 0;
     } else if ([size isEqualToString:@"M"]) {

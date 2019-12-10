@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSMutableArray <NSDictionary *> *transactionList;
 @property (strong, nonatomic) MBProgressHUD *hud;
 @property (weak, nonatomic) IBOutlet UILabel *profitLabel;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @property (assign, nonatomic) double profit;
 @property (assign, nonatomic) double summary;
@@ -28,6 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.toolbar setHidden:YES];
+    [self.datePicker setHidden:YES];
+    self.datePicker.maximumDate = [NSDate new];
     self.tableView.tableFooterView = [UIView new];
 }
 
@@ -59,6 +64,25 @@
         [self.hud hideAnimated:YES];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
         [alert show];
+    }];
+}
+
+#pragma mark - Outlets
+
+- (IBAction)clickStatement:(id)sender {
+    self.datePicker.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        if (self.datePicker.isHidden) {
+            self.datePicker.alpha = 1;
+            self.toolbar.alpha = 1;
+            [self.datePicker setHidden:NO];
+            [self.toolbar setHidden:NO];
+        } else {
+            self.datePicker.alpha = 0;
+            self.toolbar.alpha = 0;
+            [self.datePicker setHidden:YES];
+            [self.toolbar setHidden:YES];
+        }
     }];
 }
 

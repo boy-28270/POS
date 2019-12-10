@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *codeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *discountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *receiveAmountTextField;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (assign, nonatomic) double totalAmount;
 
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) SummaryView *summaryView;
 
 @property (strong, nonatomic) NSMutableArray <HistoryModel *> *historyList;
+@property (strong, nonatomic) NSMutableArray <NSDictionary *> *buyItemList;
 
 @end
 
@@ -35,7 +37,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.circleView.layer.cornerRadius = self.circleView.frame.size.height/2;
     self.historyList = [NSMutableArray array];
     self.totalAmount = 0.0;
@@ -47,6 +48,15 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryList";
+    NSDictionary *parameters = @{};
+    [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary * _Nonnull response) {
+        self.buyItemList = response[@"data"];
+        [self.collectionView reloadData];
+    } andFailureBlock:^(NSDictionary * _Nonnull error) {
+        
+    }];
+    
     if (self.historyList != nil) {
         self.totalAmount = 0;
         for (HistoryModel *model in self.historyList) {
@@ -64,21 +74,43 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCollectionViewCell" forIndexPath:indexPath];
-    
-//    NSString *imageName = indexPath.row % 2 ? @"test.jpg" : @"test.jpg";
-//   
-//    cell.imageView.image = [UIImage imageNamed:imageName];
+    NSString *text = [NSString stringWithFormat:@" %@ %@ %@ ", self.buyItemList[indexPath.row][@"name"], self.buyItemList[indexPath.row][@"color"], self.buyItemList[indexPath.row][@"size"]];
+    [cell configuration:self.buyItemList[indexPath.row][@"image"]
+                  label:text];
     return cell;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 16.0;
+    return [self.buyItemList count];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self.view endEditing:YES];
-    self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
-    [self.selectionView show:YES];
+    NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryStock";
+    NSDictionary *parameters = @{
+                                    @"code": self.buyItemList[indexPath.row][@"code"]
+                                 };
+    
+    [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary *response) {
+        if ([@"0" isEqualToString:[NSString stringWithFormat:@"%@", response[@"data"][@"item"]]]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:@"สินค้าหมด" delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+            [alert show];
+        } else {
+            self.selectionView = [[SelectionItemView alloc] initWithDelegate:self];
+            [self.selectionView configurationWithCode:response[@"data"][@"code"]
+                                                 name:response[@"data"][@"name"]
+                                             imageUrl:response[@"data"][@"image"]
+                                                 item:response[@"data"][@"item"]
+                                                 size:response[@"data"][@"size"]
+                                                color:response[@"data"][@"color"]
+                                                price:response[@"data"][@"price"]
+                                                index:0];
+            [self.selectionView show:YES];
+        }
+
+    } andFailureBlock:^(NSDictionary * _Nonnull error) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+    }];
 }
 
 - (void)textFieldDidChange {

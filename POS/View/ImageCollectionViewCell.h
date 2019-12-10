@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ImageCollectionViewCell : UICollectionViewCell
 
+- (void)configuration:(NSString *)imagePath label:(NSString *)label;
+
 @end
 
 NS_ASSUME_NONNULL_END
