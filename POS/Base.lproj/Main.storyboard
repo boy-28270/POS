@@ -385,7 +385,11 @@
                                                 </connections>
                                             </barButtonItem>
                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="eYr-sE-c7t"/>
-                                            <barButtonItem title="ยืนยัน" id="qR2-Al-zU6"/>
+                                            <barButtonItem title="ยืนยัน" id="qR2-Al-zU6">
+                                                <connections>
+                                                    <action selector="confirm:" destination="Pfd-ZS-VgM" id="dcI-Ma-zMI"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                         <color key="barTintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </toolbar>

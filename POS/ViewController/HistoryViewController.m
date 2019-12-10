@@ -86,6 +86,50 @@
     }];
 }
 
+- (IBAction)confirm:(id)sender {
+    self.datePicker.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.datePicker.alpha = 0;
+        self.toolbar.alpha = 0;
+        [self.datePicker setHidden:YES];
+        [self.toolbar setHidden:YES];
+    }];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.profit = 0;
+    self.summary = 0;
+    self.total = 0;
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"us"]];
+    [dateFormatter setDateFormat:@"yyyyMMdd"];
+    NSString *date  = [dateFormatter stringFromDate:self.datePicker.date];
+    
+    NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
+    NSDictionary *parameters = @{
+        @"date": date
+    };
+    [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary * _Nonnull response) {
+        self.transactionList = [NSMutableArray array];
+        NSArray *array = response[@"data"];
+        
+        for (NSDictionary *dict in array) {
+            [self.transactionList addObject:dict];
+            self.profit += [dict[@"profit"] doubleValue];
+            self.summary += [dict[@"summary"] doubleValue];
+            self.total += [dict[@"totalItem"] doubleValue];
+        }
+        
+        [self.tableView reloadData];
+        [self.profitLabel setText:[NSString stringWithFormat:@"จำนวน %.0f ตัว  |  ยอดขาย %@  |  กำไร %@", self.total, [Utils formatNumberWithNumber:self.summary showCurrency:NO], [Utils formatNumberWithNumber:self.profit showCurrency:NO]]];
+        [self.hud hideAnimated:YES];
+    } andFailureBlock:^(NSDictionary * _Nonnull error) {
+        [self.hud hideAnimated:YES];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"เกิดข้อผิดพลาด" message:error[@"errorMsg"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"ตกลง", nil];
+        [alert show];
+    }];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
