@@ -24,12 +24,16 @@
 @property (assign, nonatomic) double summary;
 @property (assign, nonatomic) double total;
 
+@property (assign, nonatomic) BOOL isSelectedCalendar;
+@property (assign, nonatomic) NSString *selectedCalendar;
+
 @end
 
 @implementation HistoryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isSelectedCalendar = NO;
     [self.toolbar setHidden:YES];
     [self.datePicker setHidden:YES];
     self.datePicker.maximumDate = [NSDate new];
@@ -45,7 +49,7 @@
     self.total = 0;
 
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
-    NSDictionary *parameters = @{};
+    NSDictionary *parameters = (self.isSelectedCalendar) ? @{ @"date": self.selectedCalendar } : @{};
     [Utils callServiceWithURL:URLString request:parameters WithSuccessBlock:^(NSDictionary * _Nonnull response) {
         self.transactionList = [NSMutableArray array];
         NSArray *array = response[@"data"];
@@ -104,6 +108,9 @@
     [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"us"]];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
     NSString *date  = [dateFormatter stringFromDate:self.datePicker.date];
+    
+    self.isSelectedCalendar = YES;
+    self.selectedCalendar = date;
     
     NSString *URLString = @"https://ntineloveu.com/api/pos/inquiryTransaction";
     NSDictionary *parameters = @{
