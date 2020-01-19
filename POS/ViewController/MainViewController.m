@@ -6,7 +6,7 @@
 //  Copyright © 2562 Adisak Phairat. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 #import "ImageCollectionViewCell.h"
 #import "SelectionItemView.h"
 #import "SummaryView.h"
@@ -14,7 +14,7 @@
 #import "ScanBarcodeViewController.h"
 #import "TransactionViewController.h"
 
-@interface ViewController () <UICollectionViewDataSource, UICollectionViewDelegate, SelectItemViewDelegate, SummaryViewDelegate, ScanBarcodeViewControllerDelegate, UITextFieldDelegate>
+@interface MainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, SelectItemViewDelegate, SummaryViewDelegate, ScanBarcodeViewControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *circleView;
 @property (weak, nonatomic) IBOutlet UILabel *totalAmountLabel;
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -123,6 +123,13 @@
 }
 
 #pragma mark - Outlets
+
+- (IBAction)clickLogout:(id)sender {
+    NSString *state = @"appState";
+    [[NSUserDefaults standardUserDefaults] setObject:@"login" forKey:state];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self performSegueWithIdentifier:@"backToLogin" sender:self];
+}
 
 - (IBAction)clickSearch:(id)sender {
     [self.view endEditing:YES];

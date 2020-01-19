@@ -6,11 +6,11 @@
 //  Copyright © 2562 Adisak Phairat. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EditStockViewController : ViewController
+@interface EditStockViewController : MainViewController
 
 @end
 

@@ -52,6 +52,10 @@
         [self.receiveAmountLabel setText:[Utils formatNumberWithNumber:amount showCurrency:YES]];
         [self.discountAmountLabel setText:[Utils formatNumberWithNumber:discountAmount showCurrency:YES]];
         [self.changeAmountLabel setText:[Utils formatNumberWithNumber:amount-totalAmount+discountAmount showCurrency:YES]];
+        
+        for (HistoryModel *model in self.historyList) {
+            NSLog(@"%@", [model getDictionary]);
+        }
     }
     return self;
 }

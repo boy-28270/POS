@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		120B053B831E7368DF2A7343 /* libPods-POSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 078313CE8B9697D7F6C417FC /* libPods-POSTests.a */; };
 		1242A0694B8FBE22302CCB44 /* libPods-POS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D64761436B06FB68D24B88CA /* libPods-POS.a */; };
+		D2425B2A23D47BEC004E138D /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2425B2923D47BEC004E138D /* LoginViewController.m */; };
 		D2452258222A7819005E3B3B /* ScanBarcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2452256222A7819005E3B3B /* ScanBarcodeViewController.m */; };
 		D2452259222A7819005E3B3B /* ScanBarcodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2452257222A7819005E3B3B /* ScanBarcodeViewController.xib */; };
 		D245225C222AB4C6005E3B3B /* AddStockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D245225B222AB4C6005E3B3B /* AddStockViewController.m */; };
 		D245225F222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png in Resources */ = {isa = PBXBuildFile; fileRef = D245225E222BF4B9005E3B3B /* icons8-barcode-scanner-filled-64.png */; };
 		D2B0EA312221B04B005A6F12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA302221B04B005A6F12 /* AppDelegate.m */; };
-		D2B0EA342221B04B005A6F12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA332221B04B005A6F12 /* ViewController.m */; };
+		D2B0EA342221B04B005A6F12 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2B0EA332221B04B005A6F12 /* MainViewController.m */; };
 		D2B0EA372221B04B005A6F12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA352221B04B005A6F12 /* Main.storyboard */; };
 		D2B0EA392221B04D005A6F12 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA382221B04D005A6F12 /* Assets.xcassets */; };
 		D2B0EA3C2221B04D005A6F12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2B0EA3A2221B04D005A6F12 /* LaunchScreen.storyboard */; };
@@ -76,6 +77,8 @@
 		74D13D7975F8D2025E235758 /* Pods-POSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSUITests.debug.xcconfig"; path = "Target Support Files/Pods-POSUITests/Pods-POSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BC502366656437AC624F810B /* Pods-POSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTests.release.xcconfig"; path = "Target Support Files/Pods-POSTests/Pods-POSTests.release.xcconfig"; sourceTree = "<group>"; };
 		C0B7136784B96EC43DCA7E27 /* Pods-POSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POSTests.debug.xcconfig"; path = "Target Support Files/Pods-POSTests/Pods-POSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2425B2823D47BEC004E138D /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		D2425B2923D47BEC004E138D /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		D2452255222A7818005E3B3B /* ScanBarcodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanBarcodeViewController.h; sourceTree = "<group>"; };
 		D2452256222A7819005E3B3B /* ScanBarcodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanBarcodeViewController.m; sourceTree = "<group>"; };
 		D2452257222A7819005E3B3B /* ScanBarcodeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanBarcodeViewController.xib; sourceTree = "<group>"; };
@@ -85,8 +88,8 @@
 		D2B0EA2C2221B04B005A6F12 /* POS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B0EA2F2221B04B005A6F12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D2B0EA302221B04B005A6F12 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D2B0EA322221B04B005A6F12 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D2B0EA332221B04B005A6F12 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D2B0EA322221B04B005A6F12 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		D2B0EA332221B04B005A6F12 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		D2B0EA362221B04B005A6F12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D2B0EA382221B04D005A6F12 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2B0EA3B2221B04D005A6F12 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -306,8 +309,8 @@
 		D2B0EA932222DB78005A6F12 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D2B0EA322221B04B005A6F12 /* ViewController.h */,
-				D2B0EA332221B04B005A6F12 /* ViewController.m */,
+				D2B0EA322221B04B005A6F12 /* MainViewController.h */,
+				D2B0EA332221B04B005A6F12 /* MainViewController.m */,
 				D245225A222AB4C6005E3B3B /* AddStockViewController.h */,
 				D245225B222AB4C6005E3B3B /* AddStockViewController.m */,
 				D2F0A3E22232BE2400197472 /* AddStockFirstViewController.h */,
@@ -327,6 +330,8 @@
 				D2F0A4062235585900197472 /* TransactionViewController.h */,
 				D2F0A4072235585900197472 /* TransactionViewController.m */,
 				D2F0A4082235585900197472 /* TransactionViewController.xib */,
+				D2425B2823D47BEC004E138D /* LoginViewController.h */,
+				D2425B2923D47BEC004E138D /* LoginViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -570,10 +575,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2B0EA342221B04B005A6F12 /* ViewController.m in Sources */,
+				D2B0EA342221B04B005A6F12 /* MainViewController.m in Sources */,
 				D2B0EA3F2221B04D005A6F12 /* main.m in Sources */,
 				D2452258222A7819005E3B3B /* ScanBarcodeViewController.m in Sources */,
 				D2D8719E223BEA7500C7890C /* StockImageViewController.m in Sources */,
+				D2425B2A23D47BEC004E138D /* LoginViewController.m in Sources */,
 				D2D871972238249E00C7890C /* HistoryViewController.m in Sources */,
 				D2D8719A2238263D00C7890C /* HistoryTableViewCell.m in Sources */,
 				D245225C222AB4C6005E3B3B /* AddStockViewController.m in Sources */,
