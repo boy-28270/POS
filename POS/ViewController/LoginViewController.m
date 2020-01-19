@@ -22,8 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:gestureRecognizer];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    
     self.logoImageView.layer.cornerRadius = self.logoImageView.frame.size.height/4;
     [self.emptyView setAlpha:1];
+}
+
+- (void)dismissKeyboard {
+     [self.view endEditing:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

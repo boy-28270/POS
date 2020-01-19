@@ -976,7 +976,7 @@
         <scene sceneID="LB7-U5-ifI">
             <objects>
                 <viewController id="yel-o4-8tq" customClass="LoginViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fEo-n4-OXl">
+                    <view key="view" contentMode="scaleToFill" id="fEo-n4-OXl" customClass="UIActionSheet">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
